@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>Dress Up Game HTML | Ketchup AjiNo Mayonnaise</title>
+<script type="text/javascript" src="main/main.js"></script>
+<style>
+body{
+	font-family:"Verdana", "ＭＳ Ｐゴシック","ヒラギノ角ゴPro W3","Hiragino Kaku Gothic Pro", "sans-serif";
+	color: #000;
+	margin: 0 auto;
+	background-color: #fff;
+	font-size: 13px;
+	height: 100%;
+
+	background-image: url("img/bk1.jpg");
+	background-position: center;
+	background-repeat: no-repeat
+
+}
+h1{margin:0;padding:0;}
+h2{margin:0;padding:0;}
+a{color:#006EB0;}
+th{text-align:left;}
+
+#wrap{
+	width:980px;
+	margin: 0px auto;
+	text-align:center;
+}
+
+#header{
+	width :980px;
+	margin:0;
+}
+#mu_select{
+	width:980px;
+	margin: 7px auto;
+	text-align:left;
+}
+
+
+.slt{color:#006EB0;font-weight:bold;cursor:pointer;}
+</style>
+
+
+</head>
+<body>
+<div id="wrap">
+<style>
+/* -- canvas -- */
+#cps1{
+	width:980px;
+	height:980px;
+	margin:0 auto;
+	padding:0;
+	position: relative;
+	overflow: hidden;
+	z-index:1;
+}
+
+.cps_img{
+	width:980px;
+	height:980px;
+	margin:0 auto;
+	padding:0;
+}
+
+#cps_img1{position: absolute;top:-40px;left:-40px;z-index:10;}
+
+#cps_img2_1{position: absolute;top:-40px;left:-40px;z-index:21;}
+#cps_img2_2{position: absolute;top:-40px;left:-40px;z-index:22;}
+#cps_img2_3{position: absolute;top:-40px;left:-40px;z-index:23;}
+#cps_img2_4{position: absolute;top:-40px;left:-40px;z-index:24;}
+
+#cps_amr{position: absolute;top:-40px;left:-40px;z-index:30;}
+#cps_face {position: absolute;top:-40px;left:-40px;z-index:40;}
+#cps_aml{position: absolute;top:-40px;left:-40px;z-index:50;}
+
+
+#cps_img5{position: absolute;top:-40px;left:-40px;z-index:50;}
+#cps_img6{position: absolute;top:-40px;left:-40px;z-index:60;}
+
+#cps_ck{
+	width:820px;
+	height:800px;
+	position: absolute;
+	margin:0;
+	padding:0;
+	z-index:100;
+	top:100px;
+	left:100px;
+
+
+}
+
+#cps_mu0{
+	width:120px;
+	position: absolute;
+	top:10px;
+	left:10px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu1{
+	width:150px;
+	position: absolute;
+	top:10px;
+	left:140px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu2{
+	width:120px;
+	position: absolute;
+	top:10px;
+	left:300px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu3{
+	width:100px;
+	position: absolute;
+	top:10px;
+	left:430px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu4{
+	width:80px;
+	position: absolute;
+	top:10px;
+	left:540px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu5{
+	width:80px;
+	position: absolute;
+	top:10px;
+	left:630px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu6{
+	width:80px;
+	position: absolute;
+	top:10px;
+	left:720px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu7{
+	width:90px;
+	position: absolute;
+	top:10px;
+	left:810px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+#cps_mu8{
+	width:60px;
+	position: absolute;
+	top:10px;
+	left:910px;
+	z-index:999;
+	background-color:#fff;
+	text-align:left;
+}
+
+#bk0{position: absolute;z-index:1;top:0px;left:0px;display:none;}
+#bk1{position: absolute;z-index:1;top:0px;left:0px;display:block;}
+#bk2{position: absolute;z-index:1;top:0px;left:0px;display:none;}
+#bk3{position: absolute;z-index:1;top:0px;left:0px;display:none;}
+#bk4{position: absolute;z-index:1;top:0px;left:0px;display:none;}
+#bk5{position: absolute;z-index:1;top:0px;left:0px;display:none;}
+#bk6{position: absolute;z-index:1;top:0px;left:0px;display:none;}
+#bk7{position: absolute;z-index:1;top:0px;left:0px;display:none;}
+
+
+
+
+
+
+
+/* -- img1 -- */
+#moji4{position: absolute;z-index:74;top:0px;left:0px;display:none;}
+#moji3{position: absolute;z-index:73;top:0px;left:0px;display:none;}
+#moji2{position: absolute;z-index:72;top:0px;left:0px;display:none;}
+#moji1{position: absolute;z-index:71;top:0px;left:0px;display:none;}
+
+
+#in2_8{display:none;}
+#in2_7{display:none;}
+#in2_6{display:none;}
+#in2_5{display:none;}
+#in2_4{display:none;}
+#in2_3{display:none;}
+#in2_2{display:none;}
+#in2_1{display:none;}
+#in2_0{display:none;}
+#in4{position: absolute;z-index:41;top:0px;left:0px;display:none;}
+#in3{position: absolute;z-index:41;top:0px;left:0px;display:none;}
+#in2r{position: absolute;z-index:41;top:0px;left:0px;display:none;}
+#in2{position: absolute;z-index:41;top:0px;left:0px;display:none;}
+#in1{position: absolute;z-index:41;top:0px;left:0px;display:none;}
+
+
+#pai5   {position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#pai4   {position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#pai3   {position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#pai2   {position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#pai1   {position: absolute;z-index:60;top:0px;left:0px;display:block;}
+#main_b5{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#main_b4{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#main_b3{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#main_b2{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#main_b1{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#kupa5  {position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#kupa4  {position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#kupa3  {position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#kupa2  {position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#kupa1  {position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#main_a5{position: absolute;z-index:11;top:0px;left:0px;display:none;}
+#main_a4{position: absolute;z-index:11;top:0px;left:0px;display:none;}
+#main_a3{position: absolute;z-index:11;top:0px;left:0px;display:none;}
+#main_a2{position: absolute;z-index:11;top:0px;left:0px;display:none;}
+#main_a1{position: absolute;z-index:11;top:0px;left:0px;display:block;}
+
+
+
+
+#hair_c0_1  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_b0_1  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_a0_1  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_c0_2  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_b0_2  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_a0_2  {position: absolute;z-index:10;top:0px;left:0px;display:block;}
+#hair_c0_3  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_b0_3  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_a0_3  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_c0_4  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_b0_4  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_a0_4  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_c0_5  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_b0_5  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_a0_5  {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#hair_c0_1_8{display:none;}#hair_c0_2_8{display:none;}#hair_c0_3_8{display:none;}#hair_c0_4_8{display:none;}#hair_c0_5_8{display:none;}
+#hair_c0_1_7{display:none;}#hair_c0_2_7{display:none;}#hair_c0_3_7{display:none;}#hair_c0_4_7{display:none;}#hair_c0_5_7{display:none;}
+#hair_c0_1_6{display:none;}#hair_c0_2_6{display:none;}#hair_c0_3_6{display:none;}#hair_c0_4_6{display:none;}#hair_c0_5_6{display:none;}
+#hair_c0_1_5{display:none;}#hair_c0_2_5{display:none;}#hair_c0_3_5{display:none;}#hair_c0_4_5{display:none;}#hair_c0_5_5{display:none;}
+#hair_c0_1_4{display:none;}#hair_c0_2_4{display:none;}#hair_c0_3_4{display:none;}#hair_c0_4_4{display:none;}#hair_c0_5_4{display:none;}
+#hair_c0_1_3{display:none;}#hair_c0_2_3{display:none;}#hair_c0_3_3{display:none;}#hair_c0_4_3{display:none;}#hair_c0_5_3{display:none;}
+#hair_c0_1_2{display:none;}#hair_c0_2_2{display:none;}#hair_c0_3_2{display:none;}#hair_c0_4_2{display:none;}#hair_c0_5_2{display:none;}
+#hair_c0_1_1{display:none;}#hair_c0_2_1{display:none;}#hair_c0_3_1{display:none;}#hair_c0_4_1{display:none;}#hair_c0_5_1{display:none;}
+#hair_c0_1_0{display:none;}#hair_c0_2_0{display:none;}#hair_c0_3_0{display:none;}#hair_c0_4_0{display:none;}#hair_c0_5_0{display:none;}
+#hair_b0_1_8{display:none;}#hair_b0_2_8{display:none;}#hair_b0_3_8{display:none;}#hair_b0_4_8{display:none;}#hair_b0_5_8{display:none;}
+#hair_b0_1_7{display:none;}#hair_b0_2_7{display:none;}#hair_b0_3_7{display:none;}#hair_b0_4_7{display:none;}#hair_b0_5_7{display:none;}
+#hair_b0_1_6{display:none;}#hair_b0_2_6{display:none;}#hair_b0_3_6{display:none;}#hair_b0_4_6{display:none;}#hair_b0_5_6{display:none;}
+#hair_b0_1_5{display:none;}#hair_b0_2_5{display:none;}#hair_b0_3_5{display:none;}#hair_b0_4_5{display:none;}#hair_b0_5_5{display:none;}
+#hair_b0_1_4{display:none;}#hair_b0_2_4{display:none;}#hair_b0_3_4{display:none;}#hair_b0_4_4{display:none;}#hair_b0_5_4{display:none;}
+#hair_b0_1_3{display:none;}#hair_b0_2_3{display:none;}#hair_b0_3_3{display:none;}#hair_b0_4_3{display:none;}#hair_b0_5_3{display:none;}
+#hair_b0_1_2{display:none;}#hair_b0_2_2{display:none;}#hair_b0_3_2{display:none;}#hair_b0_4_2{display:none;}#hair_b0_5_2{display:none;}
+#hair_b0_1_1{display:none;}#hair_b0_2_1{display:none;}#hair_b0_3_1{display:none;}#hair_b0_4_1{display:none;}#hair_b0_5_1{display:none;}
+#hair_b0_1_0{display:none;}#hair_b0_2_0{display:none;}#hair_b0_3_0{display:none;}#hair_b0_4_0{display:none;}#hair_b0_5_0{display:none;}
+#hair_a0_1_8{display:none;}#hair_a0_2_8{display:none;}#hair_a0_3_8{display:none;}#hair_a0_4_8{display:none;}#hair_a0_5_8{display:none;}
+#hair_a0_1_7{display:none;}#hair_a0_2_7{display:none;}#hair_a0_3_7{display:none;}#hair_a0_4_7{display:none;}#hair_a0_5_7{display:none;}
+#hair_a0_1_6{display:none;}#hair_a0_2_6{display:none;}#hair_a0_3_6{display:none;}#hair_a0_4_6{display:none;}#hair_a0_5_6{display:none;}
+#hair_a0_1_5{display:none;}#hair_a0_2_5{display:none;}#hair_a0_3_5{display:none;}#hair_a0_4_5{display:none;}#hair_a0_5_5{display:none;}
+#hair_a0_1_4{display:none;}#hair_a0_2_4{display:none;}#hair_a0_3_4{display:none;}#hair_a0_4_4{display:none;}#hair_a0_5_4{display:none;}
+#hair_a0_1_3{display:none;}#hair_a0_2_3{display:none;}#hair_a0_3_3{display:none;}#hair_a0_4_3{display:none;}#hair_a0_5_3{display:none;}
+#hair_a0_1_2{display:none;}#hair_a0_2_2{display:none;}#hair_a0_3_2{display:none;}#hair_a0_4_2{display:none;}#hair_a0_5_2{display:none;}
+#hair_a0_1_1{display:none;}#hair_a0_2_1{display:none;}#hair_a0_3_1{display:none;}#hair_a0_4_1{display:none;}#hair_a0_5_1{display:none;}
+#hair_a0_1_0{display:none;}#hair_a0_2_0{display:none;}#hair_a0_3_0{display:none;}#hair_a0_4_0{display:none;}#hair_a0_5_0{display:none;}
+
+
+
+
+/* -- img1 -- */
+
+
+/* -- img2 -- */
+
+#bf3_3r{position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#bf3_2r{position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#bf3_1r{position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#bf1_4r{position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#bf1_3r{position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#bf1_2r{position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#bf1_1r{position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#bf6_8{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf6_7{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf6_6{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf6_5{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf6_4{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf6_3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf6_2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf6_1{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf5_4{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf5_3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf5_2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf5_1{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf4_4{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf4_3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf4_2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf4_1{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf3_3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf3_2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf3_1{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf2_3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf2_2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf2_1{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf1_4{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf1_3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf1_2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bf1_1{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+
+
+
+
+/* top */
+#be5_8{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be5_7{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be5_6{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be5_5{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be5_4{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be5_3{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be5_2{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be5_1{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_8{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_7{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_6{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_5{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_4{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_3{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_2{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be4_1{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be3_6{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be3_5{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be3_4{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be3_3{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be3_2{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be3_1{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be2_6{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be2_5{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be2_4{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be2_3{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be2_2{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be2_1{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_8{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_7{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_6{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_5{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_4{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_3{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_2{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#be1_1{position: absolute;z-index:20;top:0px;left:0px;display:none;}
+/* top */
+
+
+
+/* under */
+#bd10r{position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd8r{position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd6r{position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd4r{position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd2r{position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd10{position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd9 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd8 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd7 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd6 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd5 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd4 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd3 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd2 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bd1 {position: absolute;z-index:21;top:0px;left:0px;display:none;}
+#bc10{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc9 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc8 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc7 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc6 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc5 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc4 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc3 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc2 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#bc1 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+/* under */
+
+
+
+#bb3  {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#bb2  {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#bb1  {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+
+
+/* all body */
+#ba_ami{position: absolute;z-index:16;top:0px;left:0px;display:none;}
+#ba_d4 {position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#ba_d3 {position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#ba_d2 {position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#ba_d1 {position: absolute;z-index:15;top:0px;left:0px;display:none;}
+#ba3_12{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_11{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_10{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_9 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_8 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_7 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_6 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_5 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_4 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_3 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_2 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba3_1 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_9 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_8 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_7 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_6 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_5 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_4 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_3 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_2 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba2_1 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_12{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_11{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_10{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_9 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_8 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_7 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_6 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_5 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_4 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_3 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_2 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#ba1_1 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+/* all body */
+
+/* -- img2 -- */
+
+
+/* -- arm -- */
+#am_r12 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r11 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r10 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r9 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r8 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r7 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r6 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r5 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r4 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r3 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r2 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_r1 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+
+#am_l12 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l11 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l10 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l9 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l8 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l7 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l6 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l5 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l4 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l3 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l2 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+#am_l1 {position: absolute;z-index:20;top:0px;left:0px;display:none;}
+
+
+
+#body_ar5{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_ar4{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_ar3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_ar2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_ar1{position: absolute;z-index:10;top:0px;left:0px;display:block;}
+#body_al5{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_al4{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_al3{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_al2{position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#body_al1{position: absolute;z-index:10;top:0px;left:0px;display:block;}
+
+/* -- arm -- */
+
+/* -- face -- */
+#cps_face0 {position: absolute;z-index:14;top:200px;left:700px;display:block;}
+#cps_face1 {position: absolute;z-index:15;top:200px;left:699px;display:block;}
+#cps_face2 {position: absolute;z-index:16;top:200px;left:700px;display:block;}
+#cps_face3 {position: absolute;z-index:17;top:200px;left:700px;display:block;}
+#cps_face4 {position: absolute;z-index:18;top:200px;left:700px;display:block;}
+
+#f4_4{position: absolute;z-index:101;top:0px;left:0px;display:none;}
+#f4_3{position: absolute;z-index:102;top:0px;left:0px;display:none;}
+#f4_2{position: absolute;z-index:103;top:0px;left:0px;display:none;}
+#f4_1{position: absolute;z-index:104;top:0px;left:0px;display:none;}
+
+#f3_1{position: absolute;z-index:100;top:0px;left:0px;display:block;}
+#f3_2{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f3_3{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+
+#f2_1{position: absolute;z-index:100;top:0px;left:0px;display:block;}
+#f2_2{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_3{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_4{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_5{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_6{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_7{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_8{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_9{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_10{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_11{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_12{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_13{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_14{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_15{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_16{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_17{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_18{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_19{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_20{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_21{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_22{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_23{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_24{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_25{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_26{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_27{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_28{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_29{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_30{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_31{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_32{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_33{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_34{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_35{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_36{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_37{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_38{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_39{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_40{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_41{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_42{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_43{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_44{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_45{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f2_46{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_15{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_14{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_13{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_12{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_11{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_10{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_9{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_8{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_7{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_6{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_5{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_4{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_3{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_2{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f1_1{position: absolute;z-index:100;top:0px;left:0px;display:block;}
+#f0_2{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#f0_1{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+
+
+
+/* -- img5 -- */
+
+/* -- img3 -- */
+
+
+
+
+
+/* -- img3 -- */
+
+/* -- img4 -- */
+#hair1_1{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#hair1_2{position: absolute;z-index:100;top:0px;left:0px;display:block;}
+#hair1_3{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#hair1_4{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+#hair1_5{position: absolute;z-index:100;top:0px;left:0px;display:none;}
+
+
+
+
+
+#face1 {position: absolute;z-index:10;top:0px;left:0px;display:block;}
+#face2 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#face3 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#face4 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+#face5 {position: absolute;z-index:10;top:0px;left:0px;display:none;}
+/* -- img4 -- */
+
+
+/* -- img5 -- */
+#himo {position: absolute;z-index:40;top:0px;left:0px;display:block;}
+
+
+#hair2_1{position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#hair2_2{position: absolute;z-index:30;top:0px;left:0px;display:block;}
+#hair2_3{position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#hair2_4{position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#hair2_5{position: absolute;z-index:30;top:0px;left:0px;display:none;}
+#hair2_1_8{display:none;}#hair2_2_8{display:none;}#hair2_3_8{display:none;}#hair2_4_8{display:none;}#hair2_5_8{display:none;}
+#hair2_1_7{display:none;}#hair2_2_7{display:none;}#hair2_3_7{display:none;}#hair2_4_7{display:none;}#hair2_5_7{display:none;}
+#hair2_1_6{display:none;}#hair2_2_6{display:none;}#hair2_3_6{display:none;}#hair2_4_6{display:none;}#hair2_5_6{display:none;}
+#hair2_1_5{display:none;}#hair2_2_5{display:none;}#hair2_3_5{display:none;}#hair2_4_5{display:none;}#hair2_5_5{display:none;}
+#hair2_1_4{display:none;}#hair2_2_4{display:none;}#hair2_3_4{display:none;}#hair2_4_4{display:none;}#hair2_5_4{display:none;}
+#hair2_1_3{display:none;}#hair2_2_3{display:none;}#hair2_3_3{display:none;}#hair2_4_3{display:none;}#hair2_5_3{display:none;}
+#hair2_1_2{display:none;}#hair2_2_2{display:none;}#hair2_3_2{display:none;}#hair2_4_2{display:none;}#hair2_5_2{display:none;}
+#hair2_1_1{display:none;}#hair2_2_1{display:none;}#hair2_3_1{display:none;}#hair2_4_1{display:none;}#hair2_5_1{display:none;}
+#hair2_1_0{display:none;}#hair2_2_0{display:none;}#hair2_3_0{display:none;}#hair2_4_0{display:none;}#hair2_5_0{display:none;}
+
+#hair3_1{position: absolute;z-index:40;top:0px;left:0px;display:none;}
+#hair3_2{position: absolute;z-index:40;top:0px;left:0px;display:block;}
+#hair3_3{position: absolute;z-index:40;top:0px;left:0px;display:none;}
+#hair3_4{position: absolute;z-index:40;top:0px;left:0px;display:none;}
+#hair3_5{position: absolute;z-index:40;top:0px;left:0px;display:none;}
+
+/* -- img5 -- */
+
+
+/* -- img6 -- */
+#acc1{position: absolute;z-index:40;top:0px;left:0px;display:none;}
+#acc2{position: absolute;z-index:40;top:0px;left:0px;display:none;}
+#acc3{position: absolute;z-index:40;top:0px;left:0px;display:none;}
+#cap1{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap2{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap3{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap4{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap5{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap6{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap7{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap8{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#cap9{position: absolute;z-index:50;top:0px;left:0px;display:none;}
+#itm1{position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#itm2{position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#itm3{position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#itm4{position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#itm5{position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#itm6{position: absolute;z-index:60;top:0px;left:0px;display:none;}
+#itm7{position: absolute;z-index:60;top:0px;left:0px;display:none;}
+/* -- img6 -- */
+
+
+
+
+/* --  -- */
+.menu_class0{cursor:pointer;display:block;}
+.menu_class1{cursor:pointer;display:none;}
+.mu{cursor:pointer;background-color:#ffffff;border-bottom:1px dotted #999;}
+
+#menu0{background-color:#ffffff;}
+#menu1{background-color:#ffffff;}
+#menu2{background-color:#ffffff;}
+#menu21{background-color:#ffffff;}
+#menu211{background-color:#ffffff;}
+#menu212{background-color:#ffffff;}
+#menu213{background-color:#ffffff;}
+#menu214{background-color:#ffffff;}
+#menu215{background-color:#ffffff;}
+#menu216{background-color:#ffffff;}
+#menu22{background-color:#ffffff;}
+#menu23{background-color:#ffffff;}
+#menu24{background-color:#ffffff;}
+#menu25{background-color:#ffffff;}
+#menu251{background-color:#ffffff;}
+#menu252{background-color:#ffffff;}
+#menu253{background-color:#ffffff;}
+#menu254{background-color:#ffffff;}
+#menu255{background-color:#ffffff;}
+#menu26{background-color:#ffffff;}
+#menu261{background-color:#ffffff;}
+#menu262{background-color:#ffffff;}
+#menu263{background-color:#ffffff;}
+#menu264{background-color:#ffffff;}
+#menu265{background-color:#ffffff;}
+#menu266{background-color:#ffffff;}
+#menu3{background-color:#ffffff;}
+#menu31{background-color:#ffffff;}
+#menu32{background-color:#ffffff;}
+#menu33{background-color:#ffffff;}
+#menu34{background-color:#ffffff;}
+#menu4{background-color:#ffffff;}
+#menu5{background-color:#ffffff;}
+#menu52{background-color:#ffffff;}
+#menu53{background-color:#ffffff;}
+#menu54{background-color:#ffffff;}
+#menu6{background-color:#ffffff;}
+#menu61{background-color:#ffffff;}
+#menu62{background-color:#ffffff;}
+#menu63{background-color:#ffffff;}
+#menu7{background-color:#ffffff;}
+#menu8{background-color:#ffffff;}
+#menu9{background-color:#ffffff;}
+#menu10{background-color:#ffffff;}
+#menu12{background-color:#ffffff;}
+
+
+
+</style>
+
+<!--
+x:<span id="x"></span>
+y:<span id="y"></span>
+-->
+
+<div id="a1">
+	<div id="cps1">
+		<!-- オプション -->
+		<div id="cps_mu8">
+			<div id="menu12" class="menu_class0" OnClick="fun_menu('12')">OPACITY</div>
+			<div id="list12" class="menu_class1">
+				<div id="menu12_0" class="mu" OnClick="fun_cg_op(0);" style="background-color:#EA618E;">┣0%</div>
+				<div id="menu12_1" class="mu" OnClick="fun_cg_op(1);">┣10%</div>
+				<div id="menu12_2" class="mu" OnClick="fun_cg_op(2);">┣20%</div>
+				<div id="menu12_3" class="mu" OnClick="fun_cg_op(3);">┣30%</div>
+				<div id="menu12_4" class="mu" OnClick="fun_cg_op(4);">┣40%</div>
+				<div id="menu12_5" class="mu" OnClick="fun_cg_op(5);">┣50%</div>
+				<div id="menu12_6" class="mu" OnClick="fun_cg_op(6);">┣60%</div>
+				<div id="menu12_7" class="mu" OnClick="fun_cg_op(7);">┣70%</div>
+				<div id="menu12_8" class="mu" OnClick="fun_cg_op(8);">┣80%</div>
+				<div id="menu12_9" class="mu" OnClick="fun_cg_op(9);">┗90%</div>
+			</div>
+		</div>
+		<div id="cps_mu7">
+			<div id="menu8" class="menu_class0" OnClick="fun_menu('8')">VOICE</div>
+			<div id="list8" class="menu_class1">
+				<div id="menu8_0" class="mu" OnClick="fun_cg_voice(0);" style="background-color:#EA618E;">┣none</div>
+				<div id="menu8_1" class="mu" OnClick="fun_cg_voice(1);">┣ha...ha...1</div>
+				<div id="menu8_2" class="mu" OnClick="fun_cg_voice(2);">┣ha...ha...2</div>
+				<div id="menu8_3" class="mu" OnClick="fun_cg_voice(3);">┣a!a!a!1</div>
+				<div id="menu8_4" class="mu" OnClick="fun_cg_voice(4);">┣a!a!a!2</div>
+				<div id="menu8_5" class="mu" OnClick="fun_cg_voice(5);">┣n!n!nn!</div>
+				<div id="menu8_6" class="mu" OnClick="fun_cg_voice(6);">┣ahe...ahe...</div>
+				<div id="menu8_7" class="mu" OnClick="fun_cg_voice(7);">┗iku!iku!</div>
+			</div>
+		</div>
+		<div id="cps_mu6">
+			<div id="menu10" class="menu_class0" OnClick="fun_menu('10')">Mv & Eff</div>
+			<div id="list10" class="menu_class1">
+				<div style="background-color:#ffcc33;">Movement</div>
+				<div id="menu10_0" class="mu" OnClick="fun_cg_ani(0);">┣none</div>
+				<div id="menu10_1" class="mu" OnClick="fun_cg_ani(1);" style="background-color:#EA618E;">┣normal</div>
+				<div id="menu10_2" class="mu" OnClick="fun_cg_ani(2);">┣Rolling</div>
+				<div id="menu10_3" class="mu" OnClick="fun_cg_ani(3);">┣Pitching</div>
+				<div id="menu10_4" class="mu" OnClick="fun_cg_ani(4);">┣Trembling1</div>
+				<div id="menu10_5" class="mu" OnClick="fun_cg_ani(5);">┣Trembling2</div>
+				<div id="menu10_6" class="mu" OnClick="fun_cg_ani(6);">┣Rolling2</div>
+				<div id="menu10_7" class="mu" OnClick="fun_cg_ani(7);">┗Pitching2</div>
+				<div style="background-color:#ffcc33;">effect</div>
+				<div id="menu11_1" class="mu" OnClick="fun_cg_kouka(1);">┣Serif</div>
+				<div id="menu11_2" class="mu" OnClick="fun_cg_kouka(2);" style="background-color:#EA618E;">┗Sigh</div>
+			</div>
+		</div>
+		<div id="cps_mu5">
+			<div id="menu9" class="menu_class0" OnClick="fun_menu('9')">Skin, hair</div>
+			<div id="list9" class="menu_class1">
+				<div style="background-color:#ffcc33;">Skin</div>
+				<div id="menu9_1" class="mu" OnClick="fun_cg_body(1);flg_hada=1;" style="background-color:#EA618E;">┣Yellow</div>
+				<div id="menu9_2" class="mu" OnClick="fun_cg_body(2);flg_hada=2;">┣Brown</div>
+				<div id="menu9_3" class="mu" OnClick="fun_cg_body(3);flg_hada=3;">┣white</div>
+				<div id="menu9_4" class="mu" OnClick="fun_cg_body(4);flg_hada=4;">┣blue</div>
+				<div id="menu9_5" class="mu" OnClick="fun_cg_body(5);flg_hada=5;">┗DEVIL</div>
+				<div style="background-color:#ffcc33;">hair</div>
+				<div id="menu61" class="mu" OnClick="fun_menu('61')">┣Long</div>
+				<div id="list61" class="menu_class1">
+					<div id="menu61_1" class="mu" OnClick="fun_cg_hair(1,1);" style="background-color:#EA618E;">┃┣Black</div>
+					<div id="menu61_2" class="mu" OnClick="fun_cg_hair(1,2);">┃┣Red</div>
+					<div id="menu61_3" class="mu" OnClick="fun_cg_hair(1,3);">┃┣Brown</div>
+					<div id="menu61_4" class="mu" OnClick="fun_cg_hair(1,4);">┃┣Blue</div>
+					<div id="menu61_5" class="mu" OnClick="fun_cg_hair(1,5);">┃┗Gold</div>
+				</div>
+				<div id="menu62" class="mu" OnClick="fun_menu('62')">┣Semi</div>
+				<div id="list62" class="menu_class1">
+					<div id="menu62_1" class="mu" OnClick="fun_cg_hair(2,1);">┃┣Black</div>
+					<div id="menu62_2" class="mu" OnClick="fun_cg_hair(2,2);">┃┣Red</div>
+					<div id="menu62_3" class="mu" OnClick="fun_cg_hair(2,3);">┃┣Brown</div>
+					<div id="menu62_4" class="mu" OnClick="fun_cg_hair(2,4);">┃┣Blue</div>
+					<div id="menu62_5" class="mu" OnClick="fun_cg_hair(2,5);">┃┗Gold</div>
+				</div>
+				<div id="menu63" class="mu" OnClick="fun_menu('63')">┗Short</div>
+				<div id="list63" class="menu_class1">
+					<div id="menu63_1" class="mu" OnClick="fun_cg_hair(3,1);">□┣Black</div>
+					<div id="menu63_2" class="mu" OnClick="fun_cg_hair(3,2);">□┣Red</div>
+					<div id="menu63_3" class="mu" OnClick="fun_cg_hair(3,3);">□┣Brown</div>
+					<div id="menu63_4" class="mu" OnClick="fun_cg_hair(3,4);">□┣Blue</div>
+					<div id="menu63_5" class="mu" OnClick="fun_cg_hair(3,5);">□┗Gold</div>
+				</div>
+			</div>
+		</div>
+		<div id="cps_mu4">
+			<div id="menu7" class="menu_class0" OnClick="fun_menu('7')">Background</div>
+			<div id="list7" class="menu_class1">
+				<div id="menu7_19" class="mu" OnClick="fun_cg_bk(19);">┣none:white</div>
+				<div id="menu7_20" class="mu" OnClick="fun_cg_bk(20);">┣none:black</div>
+				<div id="menu7_21" class="mu" OnClick="fun_cg_bk(21);">┣none:Red</div>
+				<div id="menu7_1" class="mu" OnClick="fun_cg_bk(1);" style="background-color:#EA618E;">┣Classroom</div>
+				<div id="menu7_2" class="mu" OnClick="fun_cg_bk(2);">┣Forest</div>
+				<div id="menu7_3" class="mu" OnClick="fun_cg_bk(3);">┣Park</div>
+				<div id="menu7_4" class="mu" OnClick="fun_cg_bk(4);">┣Room</div>
+				<div id="menu7_5" class="mu" OnClick="fun_cg_bk(5);">┣Living</div>
+				<div id="menu7_6" class="mu" OnClick="fun_cg_bk(6);">┣Shop</div>
+				<div id="menu7_7" class="mu" OnClick="fun_cg_bk(7);">┣Hospital</div>
+				<div id="menu7_8" class="mu" OnClick="fun_cg_bk(8);">┣Bathroom</div>
+				<div id="menu7_9" class="mu" OnClick="fun_cg_bk(9);">┣Office</div>
+				<div id="menu7_10" class="mu" OnClick="fun_cg_bk(10);">┣Locker room</div>
+				<div id="menu7_11" class="mu" OnClick="fun_cg_bk(11);">┣Men's toilets</div>
+				<div id="menu7_12" class="mu" OnClick="fun_cg_bk(12);">┣storehouse</div>
+				<div id="menu7_13" class="mu" OnClick="fun_cg_bk(13);">┣Gymnasium</div>
+				<div id="menu7_14" class="mu" OnClick="fun_cg_bk(14);">┣Broadcasting room</div>
+				<div id="menu7_15" class="mu" OnClick="fun_cg_bk(15);">┣Cave</div>
+				<div id="menu7_16" class="mu" OnClick="fun_cg_bk(16);">┣Jail</div>
+				<div id="menu7_17" class="mu" OnClick="fun_cg_bk(17);">┣Torture room</div>
+				<div id="menu7_18" class="mu" OnClick="fun_cg_bk(18);">┗Church</div>
+			</div>
+		</div>
+		<div id="cps_mu3">
+			<div id="menu3" class="menu_class0" OnClick="fun_menu('3')">Expression</div>
+			<div id="list3" class="menu_class1">
+				<div id="menu31" class="mu" OnClick="fun_menu('31')">┣Eyebrow</div>
+				<div id="list31" class="menu_class1">
+					<div id="menu31_1" class="mu" OnClick="fun_cg_31(1);">┃┣normal</div>
+					<div id="menu31_2" class="mu" OnClick="fun_cg_31(2);">┃┣Anger</div>
+					<div id="menu31_3" class="mu" OnClick="fun_cg_31(3);">┃┗Weeping</div>
+				</div>
+				<div id="menu32" class="mu" OnClick="fun_menu('32')">┣Eye</div>
+				<div id="list32" class="menu_class1">
+					<div id="menu32_1" class="mu" OnClick="fun_cg_32(1);">┃┣normal1</div>
+					<div id="menu32_2" class="mu" OnClick="fun_cg_32(2);">┃┣normal2</div>
+					<div id="menu32_3" class="mu" OnClick="fun_cg_32(3);">┃┣normal3</div>
+					<div id="menu32_4" class="mu" OnClick="fun_cg_32(4);">┃┣normal4</div>
+					<div id="menu32_5" class="mu" OnClick="fun_cg_32(5);">┃┣normal5</div>
+					<div id="menu32_6" class="mu" OnClick="fun_cg_32(6);">┃┣Glare1</div>
+					<div id="menu32_7" class="mu" OnClick="fun_cg_32(7);">┃┣Glare2</div>
+					<div id="menu32_8" class="mu" OnClick="fun_cg_32(8);">┃┣Glare3</div>
+					<div id="menu32_9" class="mu" OnClick="fun_cg_32(9);">┃┣Glare4</div>
+					<div id="menu32_10" class="mu" OnClick="fun_cg_32(10);">┃┣Glare5</div>
+					<div id="menu32_11" class="mu" OnClick="fun_cg_32(11);">┃┣Dim1</div>
+					<div id="menu32_12" class="mu" OnClick="fun_cg_32(12);">┃┣Dim2</div>
+					<div id="menu32_13" class="mu" OnClick="fun_cg_32(13);">┃┣Dim3</div>
+					<div id="menu32_14" class="mu" OnClick="fun_cg_32(14);">┃┣Dim4</div>
+					<div id="menu32_15" class="mu" OnClick="fun_cg_32(15);">┃┣Dim5</div>
+					<div id="menu32_16" class="mu" OnClick="fun_cg_32(16);">┃┣Frightened1</div>
+					<div id="menu32_17" class="mu" OnClick="fun_cg_32(17);">┃┣Frightened2</div>
+					<div id="menu32_18" class="mu" OnClick="fun_cg_32(18);">┃┣Frightened3</div>
+					<div id="menu32_19" class="mu" OnClick="fun_cg_32(19);">┃┣Frightened4</div>
+					<div id="menu32_20" class="mu" OnClick="fun_cg_32(20);">┃┣Frightened5</div>
+					<div id="menu32_21" class="mu" OnClick="fun_cg_32(21);">┃┣Surprise1</div>
+					<div id="menu32_22" class="mu" OnClick="fun_cg_32(22);">┃┣Surprise2</div>
+					<div id="menu32_23" class="mu" OnClick="fun_cg_32(23);">┃┣Surprise3</div>
+					<div id="menu32_24" class="mu" OnClick="fun_cg_32(24);">┃┣Surprise4</div>
+					<div id="menu32_25" class="mu" OnClick="fun_cg_32(25);">┃┣Surprise5</div>
+					<div id="menu32_26" class="mu" OnClick="fun_cg_32(26);">┃┣Fatigue1</div>
+					<div id="menu32_27" class="mu" OnClick="fun_cg_32(27);">┃┣Fatigue2</div>
+					<div id="menu32_28" class="mu" OnClick="fun_cg_32(28);">┃┣Fatigue3</div>
+					<div id="menu32_29" class="mu" OnClick="fun_cg_32(29);">┃┣Fatigue4</div>
+					<div id="menu32_30" class="mu" OnClick="fun_cg_32(30);">┃┣Fatigue5</div>
+					<div id="menu32_31" class="mu" OnClick="fun_cg_32(31);">┃┣ahe1</div>
+					<div id="menu32_32" class="mu" OnClick="fun_cg_32(32);">┃┣ahe2</div>
+					<div id="menu32_33" class="mu" OnClick="fun_cg_32(33);">┃┣ahe3</div>
+					<div id="menu32_34" class="mu" OnClick="fun_cg_32(34);">┃┣ahe4</div>
+					<div id="menu32_35" class="mu" OnClick="fun_cg_32(35);">┃┣ahe5</div>
+					<div id="menu32_36" class="mu" OnClick="fun_cg_32(36);">┃┣Weeping1</div>
+					<div id="menu32_37" class="mu" OnClick="fun_cg_32(37);">┃┣Weeping2</div>
+					<div id="menu32_38" class="mu" OnClick="fun_cg_32(38);">┃┣Weeping3</div>
+					<div id="menu32_39" class="mu" OnClick="fun_cg_32(39);">┃┣Weeping4</div>
+					<div id="menu32_40" class="mu" OnClick="fun_cg_32(40);">┃┣Pewter</div>
+					<div id="menu32_41" class="mu" OnClick="fun_cg_32(41);">┃┣Closing</div>
+					<div id="menu32_42" class="mu" OnClick="fun_cg_32(42);">┃┣Gag1</div>
+					<div id="menu32_43" class="mu" OnClick="fun_cg_32(43);">┃┣Gag2</div>
+					<div id="menu32_44" class="mu" OnClick="fun_cg_32(44);">┃┣Gag3</div>
+					<div id="menu32_45" class="mu" OnClick="fun_cg_32(45);">┃┣Vortex1</div>
+					<div id="menu32_46" class="mu" OnClick="fun_cg_32(46);">┃┗Vortex2</div>
+				</div>
+				<div id="menu33" class="mu" OnClick="fun_menu('33')">┣Mouth</div>
+				<div id="list33" class="menu_class1">
+					<div id="menu33_1" class="mu" OnClick="fun_cg_33(1);">┃┣Op:normal</div>
+					<div id="menu33_2" class="mu" OnClick="fun_cg_33(2);">┃┣Op:Smile</div>
+					<div id="menu33_3" class="mu" OnClick="fun_cg_33(3);">┃┣Op:Frightened</div>
+					<div id="menu33_4" class="mu" OnClick="fun_cg_33(4);">┃┣Op:Shout1</div>
+					<div id="menu33_5" class="mu" OnClick="fun_cg_33(5);">┃┣Op:Shout2</div>
+					<div id="menu33_6" class="mu" OnClick="fun_cg_33(6);">┃┣Op:normal2</div>
+					<div id="menu33_7" class="mu" OnClick="fun_cg_33(7);">┃┣Op:ahe</div>
+					<div id="menu33_8" class="mu" OnClick="fun_cg_33(8);">┃┣Op:△</div>
+					<div id="menu33_9" class="mu" OnClick="fun_cg_33(9);">┃┣Op:Smiling</div>
+					<div id="menu33_10" class="mu" OnClick="fun_cg_33(10);">┃┣Op:Loose</div>
+					<div id="menu33_11" class="mu" OnClick="fun_cg_33(11);">┃┣Involuntary nocturnal tooth grinding</div>
+					<div id="menu33_12" class="mu" OnClick="fun_cg_33(12);">┃┣Cl:normal</div>
+					<div id="menu33_13" class="mu" OnClick="fun_cg_33(13);">┃┣Cl:bind</div>
+					<div id="menu33_14" class="mu" OnClick="fun_cg_33(14);">┃┣Cl:Bad mood</div>
+					<div id="menu33_15" class="mu" OnClick="fun_cg_33(15);">┃┣Cl:Smile</div>
+				</div>
+				<div id="menu34" class="mu" OnClick="fun_menu('34')">┗Option</div>
+				<div id="list34" class="menu_class1">
+					<div id="menu34_1" class="mu" OnClick="fun_cg_34(1);">□┣Blush</div>
+					<div id="menu34_2" class="mu" OnClick="fun_cg_34(2);">□┣Cold sweat</div>
+					<div id="menu34_3" class="mu" OnClick="fun_cg_34(3);">□┣Glasses</div>
+					<div id="menu34_4" class="mu" OnClick="fun_cg_34(4);">□┣Blindfold</div>
+					<div id="menu34_5" class="mu" OnClick="fun_cg_34(5);">□┣tape(Eye)</div>
+					<div id="menu34_6" class="mu" OnClick="fun_cg_34(6);">□┗tape(Mouth)</div>
+				</div>
+			</div>
+		</div>
+		<div id="cps_mu2">
+			<div id="menu53" class="menu_class0" OnClick="fun_menu('53')">Adult goods1</div>
+			<div id="list53" class="menu_class1">
+				<div id="menu53_1" class="mu" OnClick="fun_cg_item(1);">┣Electrode:nipple</div>
+				<div id="menu53_2" class="mu" OnClick="fun_cg_item(2);">┣Electrode:Clitoris</div>
+				<div id="menu53_3" class="mu" OnClick="fun_cg_item(3);">┣rotor:nipple</div>
+				<div id="menu53_4" class="mu" OnClick="fun_cg_item(4);">┣rotor:Clitoris</div>
+				<div id="menu53_5" class="mu" OnClick="fun_cg_item(5);">┣Clip:nipple</div>
+				<div id="menu53_6" class="mu" OnClick="fun_cg_item(6);">┣Clip:Clitoris</div>
+				<div id="menu53_7" class="mu" OnClick="fun_cg_item(7);">┗Clip:labia</div>
+				<div id="menu54" style="background-color:#ffcc33;">Adult goods2</div>
+				<div id="menu54_0" class="mu" OnClick="fun_cg_in(0);piston=0;" style="background-color:#EA618E;">┣none</div>
+				<div id="menu54_1" class="mu" OnClick="fun_cg_in(1);piston=0;">┣Cusco</div>
+				<div id="menu54_2" class="mu" OnClick="fun_cg_in(2);piston=0;">┣Dildo</div>
+				<div id="menu54_3" class="mu" OnClick="fun_cg_in(3);piston=1;">┣DildoPiston</div>
+				<div id="menu54_4" class="mu" OnClick="fun_cg_in(4);piston=0;">┣DildoSpin</div>
+				<div id="menu54_5" class="mu" OnClick="fun_cg_in(5);piston=0;">┣Cucumber</div>
+				<div id="menu54_6" class="mu" OnClick="fun_cg_in(6);piston=1;">┣CucumberPiston</div>
+				<div id="menu54_7" class="mu" OnClick="fun_cg_in(7);piston=0;">┣Recorder</div>
+				<div id="menu54_8" class="mu" OnClick="fun_cg_in(8);piston=1;">┗RecorderPiston</div>
+			</div>
+		</div>
+		<div id="cps_mu1">
+			<div id="menu0" class="menu_class0" OnClick="fun_menu('0')">Costume</div>
+			<div id="list0" class="menu_class1">
+				<div id="menu21" class="mu" OnClick="fun_menu('21')">┣full</div>
+				<div id="list21" class="menu_class1">
+					<div id="menu210" class="mu" OnClick="fun_cg_21(0,0)">┃┣none</div>
+					<div id="menu211" class="mu" OnClick="fun_menu('211')">┃┣SukuMizu</div>
+					<div id="list211" class="menu_class1">
+						<div id="menu211_1" class="mu" OnClick="fun_cg_21(1,1);">┃┃┣blue 0</div>
+						<div id="menu211_2" class="mu" OnClick="fun_cg_21(1,2);">┃┃┣blue 1</div>
+						<div id="menu211_3" class="mu" OnClick="fun_cg_21(1,3);">┃┃┣blue 2</div>
+						<div id="menu211_4" class="mu" OnClick="fun_cg_21(1,4);">┃┃┣black 0</div>
+						<div id="menu211_5" class="mu" OnClick="fun_cg_21(1,5);">┃┃┣black 1</div>
+						<div id="menu211_6" class="mu" OnClick="fun_cg_21(1,6);">┃┃┣black 2</div>
+						<div id="menu211_7" class="mu" OnClick="fun_cg_21(1,7);">┃┃┣white 0</div>
+						<div id="menu211_8" class="mu" OnClick="fun_cg_21(1,8);">┃┃┣white 1</div>
+						<div id="menu211_9" class="mu" OnClick="fun_cg_21(1,9);">┃┃┣white 2</div>
+						<div id="menu211_10" class="mu" OnClick="fun_cg_21(1,10);">┃┃┣pink 0</div>
+						<div id="menu211_11" class="mu" OnClick="fun_cg_21(1,11);">┃┃┣pink 1</div>
+						<div id="menu211_12" class="mu" OnClick="fun_cg_21(1,12);">┃┃┗pink 2</div>
+					</div>
+					<div id="menu212" class="mu" OnClick="fun_menu('212')">┃┣Swimsuit</div>
+					<div id="list212" class="menu_class1">
+						<div id="menu212_1" class="mu" OnClick="fun_cg_21(2,1);">┃┃┣blue 0</div>
+						<div id="menu212_2" class="mu" OnClick="fun_cg_21(2,2);">┃┃┣blue 1</div>
+						<div id="menu212_3" class="mu" OnClick="fun_cg_21(2,3);">┃┃┣blue 2</div>
+						<div id="menu212_4" class="mu" OnClick="fun_cg_21(2,4);">┃┃┣red 0</div>
+						<div id="menu212_5" class="mu" OnClick="fun_cg_21(2,5);">┃┃┣red 1</div>
+						<div id="menu212_6" class="mu" OnClick="fun_cg_21(2,6);">┃┃┣red 2</div>
+						<div id="menu212_7" class="mu" OnClick="fun_cg_21(2,7);">┃┃┣black 0</div>
+						<div id="menu212_8" class="mu" OnClick="fun_cg_21(2,8);">┃┃┣black 1</div>
+						<div id="menu212_9" class="mu" OnClick="fun_cg_21(2,9);">┃┃┗black 2</div>
+					</div>
+					<div id="menu213" class="mu" OnClick="fun_menu('213')">┃┣Bunny girl normal</div>
+					<div id="list213" class="menu_class1">
+						<div id="menu213_1" class="mu" OnClick="fun_cg_21(3,1);">┃┃┣black 0</div>
+						<div id="menu213_2" class="mu" OnClick="fun_cg_21(3,2);">┃┃┣black 1</div>
+						<div id="menu213_3" class="mu" OnClick="fun_cg_21(3,3);">┃┃┣black 2</div>
+						<div id="menu213_4" class="mu" OnClick="fun_cg_21(3,4);">┃┃┣red 0</div>
+						<div id="menu213_5" class="mu" OnClick="fun_cg_21(3,5);">┃┃┣red 1</div>
+						<div id="menu213_6" class="mu" OnClick="fun_cg_21(3,6);">┃┃┣red 2</div>
+						<div id="menu213_7" class="mu" OnClick="fun_cg_21(3,7);">┃┃┣white 0</div>
+						<div id="menu213_8" class="mu" OnClick="fun_cg_21(3,8);">┃┃┣white 1</div>
+						<div id="menu213_9" class="mu" OnClick="fun_cg_21(3,9);">┃┃┣white 2</div>
+						<div id="menu213_10" class="mu" OnClick="fun_cg_21(3,10);">┃┃┣blue 0</div>
+						<div id="menu213_11" class="mu" OnClick="fun_cg_21(3,11);">┃┃┣blue 1</div>
+						<div id="menu213_12" class="mu" OnClick="fun_cg_21(3,12);">┃┃┗blue 2</div>
+					</div>
+					<div id="menu214" class="mu" OnClick="fun_menu('214')">┃┣Bunny girl Color tights</div>
+					<div id="list214" class="menu_class1">
+						<div id="menu214_1" class="mu" OnClick="fun_cg_21(4,1);">┃┃┣black 0</div>
+						<div id="menu214_2" class="mu" OnClick="fun_cg_21(4,2);">┃┃┣black 1</div>
+						<div id="menu214_3" class="mu" OnClick="fun_cg_21(4,3);">┃┃┣black 2</div>
+						<div id="menu214_4" class="mu" OnClick="fun_cg_21(4,4);">┃┃┣red 0</div>
+						<div id="menu214_5" class="mu" OnClick="fun_cg_21(4,5);">┃┃┣red 1</div>
+						<div id="menu214_6" class="mu" OnClick="fun_cg_21(4,6);">┃┃┣red 2</div>
+						<div id="menu214_7" class="mu" OnClick="fun_cg_21(4,7);">┃┃┣white 0</div>
+						<div id="menu214_8" class="mu" OnClick="fun_cg_21(4,8);">┃┃┣white 1</div>
+						<div id="menu214_9" class="mu" OnClick="fun_cg_21(4,9);">┃┃┣white 2</div>
+						<div id="menu214_10" class="mu" OnClick="fun_cg_21(4,10);">┃┃┣blue 0</div>
+						<div id="menu214_11" class="mu" OnClick="fun_cg_21(4,11);">┃┃┣blue 1</div>
+						<div id="menu214_12" class="mu" OnClick="fun_cg_21(4,12);">┃┃┗blue 2</div>
+					</div>
+					<div id="menu215" class="mu" OnClick="fun_menu('215')">┃┣Bunny girl Fishnet tights</div>
+					<div id="list215" class="menu_class1">
+						<div id="menu215_1" class="mu" OnClick="fun_cg_21(5,1);">┃┃┣black 0</div>
+						<div id="menu215_2" class="mu" OnClick="fun_cg_21(5,2);">┃┃┣black 1</div>
+						<div id="menu215_3" class="mu" OnClick="fun_cg_21(5,3);">┃┃┣black 2</div>
+						<div id="menu215_4" class="mu" OnClick="fun_cg_21(5,4);">┃┃┣red 0</div>
+						<div id="menu215_5" class="mu" OnClick="fun_cg_21(5,5);">┃┃┣red 1</div>
+						<div id="menu215_6" class="mu" OnClick="fun_cg_21(5,6);">┃┃┣red 2</div>
+						<div id="menu215_7" class="mu" OnClick="fun_cg_21(5,7);">┃┃┣white 0</div>
+						<div id="menu215_8" class="mu" OnClick="fun_cg_21(5,8);">┃┃┣white 1</div>
+						<div id="menu215_9" class="mu" OnClick="fun_cg_21(5,9);">┃┃┣white 2</div>
+						<div id="menu215_10" class="mu" OnClick="fun_cg_21(5,10);">┃┃┣blue 0</div>
+						<div id="menu215_11" class="mu" OnClick="fun_cg_21(5,11);">┃┃┣blue 1</div>
+						<div id="menu215_12" class="mu" OnClick="fun_cg_21(5,12);">┃┃┗blue 2</div>
+					</div>
+					<div id="menu216" class="mu" OnClick="fun_menu('216')">┃┗Bunny girl Raw leg</div>
+					<div id="list216" class="menu_class1">
+						<div id="menu216_1" class="mu" OnClick="fun_cg_21(6,1);">┃□┣black 0</div>
+						<div id="menu216_2" class="mu" OnClick="fun_cg_21(6,2);">┃□┣black 1</div>
+						<div id="menu216_3" class="mu" OnClick="fun_cg_21(6,3);">┃□┣black 2</div>
+						<div id="menu216_4" class="mu" OnClick="fun_cg_21(6,4);">┃□┣red 0</div>
+						<div id="menu216_5" class="mu" OnClick="fun_cg_21(6,5);">┃□┣red 1</div>
+						<div id="menu216_6" class="mu" OnClick="fun_cg_21(6,6);">┃□┣red 2</div>
+						<div id="menu216_7" class="mu" OnClick="fun_cg_21(6,7);">┃□┣white 0</div>
+						<div id="menu216_8" class="mu" OnClick="fun_cg_21(6,8);">┃□┣white 1</div>
+						<div id="menu216_9" class="mu" OnClick="fun_cg_21(6,9);">┃□┣white 2</div>
+						<div id="menu216_10" class="mu" OnClick="fun_cg_21(6,10);">┃□┣blue 0</div>
+						<div id="menu216_11" class="mu" OnClick="fun_cg_21(6,11);">┃□┣blue 1</div>
+						<div id="menu216_12" class="mu" OnClick="fun_cg_21(6,12);">┃□┗blue 2</div>
+					</div>
+				</div>
+				<div id="menu22" class="mu" OnClick="fun_menu('22')">┣Socks</div>
+				<div id="list22" class="menu_class1">
+					<div id="menu22_0" class="mu" style="background-color:#EA618E;" OnClick="fun_cg_22(0);">┃┣none</div>
+					<div id="menu22_1" class="mu" OnClick="fun_cg_22(1);">┃┣black</div>
+					<div id="menu22_2" class="mu" OnClick="fun_cg_22(2);">┃┣white</div>
+					<div id="menu22_3" class="mu" OnClick="fun_cg_22(3);">┃┗red</div>
+				</div>
+				<div id="menu23" class="mu" OnClick="fun_menu('23')">┣Underwear↑</div>
+				<div id="list23" class="menu_class1">
+					<div id="menu23_0" class="mu" OnClick="fun_cg_23(0);">┃┣none</div>
+					<div id="menu23_1" class="mu" OnClick="fun_cg_23(1);">┃┣Bra black 0</div>
+					<div id="menu23_2" class="mu" OnClick="fun_cg_23(2);">┃┣Bra black 1</div>
+					<div id="menu23_3" class="mu" OnClick="fun_cg_23(3);">┃┣Bra white 0</div>
+					<div id="menu23_4" class="mu" OnClick="fun_cg_23(4);">┃┣Bra white 1</div>
+					<div id="menu23_5" class="mu" OnClick="fun_cg_23(5);">┃┣Bra red 0</div>
+					<div id="menu23_6" class="mu" OnClick="fun_cg_23(6);">┃┣Bra red 1</div>
+					<div id="menu23_7" class="mu" OnClick="fun_cg_23(7);">┃┣Swimwear blue 0</div>
+					<div id="menu23_8" class="mu" OnClick="fun_cg_23(8);">┃┣Swimwear blue 1</div>
+					<div id="menu23_9" class="mu" OnClick="fun_cg_23(9);">┃┣Swimwear black 0</div>
+					<div id="menu23_10" class="mu" OnClick="fun_cg_23(10);">┃┗Swimwear black 1</div>
+				</div>
+				<div id="menu24" class="mu" OnClick="fun_menu('24')">┣Underwear↓</div>
+				<div id="list24" class="menu_class1">
+					<div id="menu24_0" class="mu" OnClick="fun_cg_24(0);">┃┣none</div>
+					<div id="menu24_1" class="mu" OnClick="fun_cg_24(1);">┃┣Panties black 1</div>
+					<div id="menu24_2" class="mu" OnClick="fun_cg_24(2);">┃┣Panties black 2</div>
+					<div id="menu24_3" class="mu" OnClick="fun_cg_24(3);">┃┣Panties white 1</div>
+					<div id="menu24_4" class="mu" OnClick="fun_cg_24(4);">┃┣Panties white 2</div>
+					<div id="menu24_5" class="mu" OnClick="fun_cg_24(5);">┃┣Panties red 1</div>
+					<div id="menu24_6" class="mu" OnClick="fun_cg_24(6);">┃┣Panties red 2</div>
+					<div id="menu24_7" class="mu" OnClick="fun_cg_24(7);">┃┣Swimwear blue 1</div>
+					<div id="menu24_8" class="mu" OnClick="fun_cg_24(8);">┃┣Swimwear blue 2</div>
+					<div id="menu24_9" class="mu" OnClick="fun_cg_24(9);">┃┣Swimwear black 1</div>
+					<div id="menu24_10" class="mu" OnClick="fun_cg_24(10);">┃┗Swimwear black 2</div>
+				</div>
+				<div id="menu25" class="mu" OnClick="fun_menu('25')">┣Outerwear↑</div>
+				<div id="list25" class="menu_class1">
+					<div id="menu250" class="mu" OnClick="fun_cg_25(0,0)">┃┣none</div>
+					<div id="menu251" class="mu" OnClick="fun_menu('251')">┃┣Nurse</div>
+					<div id="list251" class="menu_class1">
+						<div id="menu251_1" class="mu" OnClick="fun_cg_25(1,1);">┃┃┣Pink 0</div>
+						<div id="menu251_2" class="mu" OnClick="fun_cg_25(1,2);">┃┃┣Pink 1</div>
+						<div id="menu251_3" class="mu" OnClick="fun_cg_25(1,3);">┃┃┣white 0</div>
+						<div id="menu251_4" class="mu" OnClick="fun_cg_25(1,4);">┃┃┣white 1</div>
+						<div id="menu251_5" class="mu" OnClick="fun_cg_25(1,5);">┃┃┣black 0</div>
+						<div id="menu251_6" class="mu" OnClick="fun_cg_25(1,6);">┃┃┣black 1</div>
+						<div id="menu251_7" class="mu" OnClick="fun_cg_25(1,7);">┃┃┣red 0</div>
+						<div id="menu251_8" class="mu" OnClick="fun_cg_25(1,8);">┃┃┗red 1</div>
+					</div>
+					<div id="menu252" class="mu" OnClick="fun_menu('252')">┃┣school/private wear</div>
+					<div id="list252" class="menu_class1">
+						<div id="menu252_1" class="mu" OnClick="fun_cg_25(2,1);">┃┃┣school wear 1</div>
+						<div id="menu252_2" class="mu" OnClick="fun_cg_25(2,2);">┃┃┣school wear 2</div>
+						<div id="menu252_3" class="mu" OnClick="fun_cg_25(2,3);">┃┃┣private wear blue 1</div>
+						<div id="menu252_4" class="mu" OnClick="fun_cg_25(2,4);">┃┃┣private wear blue 2</div>
+						<div id="menu252_5" class="mu" OnClick="fun_cg_25(2,5);">┃┃┣private wear red 1</div>
+						<div id="menu252_6" class="mu" OnClick="fun_cg_25(2,6);">┃┃┗private wear red 2</div>
+					</div>
+					<div id="menu253" class="mu" OnClick="fun_menu('253')">┃┣Maid</div>
+					<div id="list253" class="menu_class1">
+						<div id="menu253_1" class="mu" OnClick="fun_cg_25(3,1);">┃┃┣Maid black 1</div>
+						<div id="menu253_2" class="mu" OnClick="fun_cg_25(3,2);">┃┃┣Maid black 2</div>
+						<div id="menu253_3" class="mu" OnClick="fun_cg_25(3,3);">┃┃┣Maid blue 1</div>
+						<div id="menu253_4" class="mu" OnClick="fun_cg_25(3,4);">┃┃┣Maid blue 2</div>
+						<div id="menu253_5" class="mu" OnClick="fun_cg_25(3,5);">┃┃┣Maid red 1</div>
+						<div id="menu253_6" class="mu" OnClick="fun_cg_25(3,6);">┃┃┗Maid red 2</div>
+					</div>
+					<div id="menu254" class="mu" OnClick="fun_menu('254')">┃┣Cheerleader</div>
+					<div id="list254" class="menu_class1">
+						<div id="menu254_1" class="mu" OnClick="fun_cg_25(4,1);">┃┃┣Chia blue 1</div>
+						<div id="menu254_2" class="mu" OnClick="fun_cg_25(4,2);">┃┃┣Chia blue 2</div>
+						<div id="menu254_3" class="mu" OnClick="fun_cg_25(4,3);">┃┃┣Chia red 1</div>
+						<div id="menu254_4" class="mu" OnClick="fun_cg_25(4,4);">┃┃┣Chia red 2</div>
+						<div id="menu254_5" class="mu" OnClick="fun_cg_25(4,5);">┃┃┣Chia Yellow 1</div>
+						<div id="menu254_6" class="mu" OnClick="fun_cg_25(4,6);">┃┃┣Chia Yellow 2</div>
+						<div id="menu254_7" class="mu" OnClick="fun_cg_25(4,7);">┃┃┣Chia Green 1</div>
+						<div id="menu254_8" class="mu" OnClick="fun_cg_25(4,8);">┃┃┗Chia Green 2</div>
+					</div>
+					<div id="menu255" class="mu" OnClick="fun_menu('255')">┃┗Gym suit</div>
+					<div id="list255" class="menu_class1">
+						<div id="menu255_1" class="mu" OnClick="fun_cg_25(5,1);">┃□┣Gym suit black 1</div>
+						<div id="menu255_2" class="mu" OnClick="fun_cg_25(5,2);">┃□┣Gym suit black 2</div>
+						<div id="menu255_3" class="mu" OnClick="fun_cg_25(5,3);">┃□┣Gym suit red 1</div>
+						<div id="menu255_4" class="mu" OnClick="fun_cg_25(5,4);">┃□┣Gym suit red 2</div>
+						<div id="menu255_5" class="mu" OnClick="fun_cg_25(5,5);">┃□┣Gym suit blue 1</div>
+						<div id="menu255_6" class="mu" OnClick="fun_cg_25(5,6);">┃□┣Gym suit blue 2</div>
+						<div id="menu255_7" class="mu" OnClick="fun_cg_25(5,7);">┃□┣Gym suit Green 1</div>
+						<div id="menu255_8" class="mu" OnClick="fun_cg_25(5,8);">┃□┗Gym suit Green 2</div>
+					</div>
+				</div>
+				<div id="menu26" class="mu" OnClick="fun_menu('26')">┣Outerwear↓</div>
+				<div id="list26" class="menu_class1">
+					<div id="menu260" class="mu" OnClick="fun_cg_26(0,0)">┃┣none</div>
+					<div id="menu261" class="mu" OnClick="fun_menu('261')">┃┣Skirt</div>
+					<div id="list261" class="menu_class1">
+						<div id="menu261_1" class="mu" OnClick="fun_cg_26(1,1)">┃┃┣Skirt red</div>
+						<div id="menu261_2" class="mu" OnClick="fun_cg_26(1,2)">┃┃┣Skirt brown</div>
+						<div id="menu261_3" class="mu" OnClick="fun_cg_26(1,3)">┃┃┣Skirt blue</div>
+						<div id="menu261_4" class="mu" OnClick="fun_cg_26(1,4)">┃┃┗Skirt black</div>
+					</div>
+					<div id="menu262" class="mu" OnClick="fun_menu('262')">┃┣Hot pants</div>
+					<div id="list262" class="menu_class1">
+						<div id="menu262_1" class="mu" OnClick="fun_cg_26(2,1)">┃┃┣Hot pants black</div>
+						<div id="menu262_2" class="mu" OnClick="fun_cg_26(2,2)">┃┃┣Hot pants white</div>
+						<div id="menu262_3" class="mu" OnClick="fun_cg_26(2,3)">┃┃┗Hot pants red</div>
+					</div>
+					<div id="menu263" class="mu" OnClick="fun_menu('263')">┃┣Maid</div>
+					<div id="list263" class="menu_class1">
+						<div id="menu263_1" class="mu" OnClick="fun_cg_26(3,1)">┃┃┣Maid black</div>
+						<div id="menu263_2" class="mu" OnClick="fun_cg_26(3,2)">┃┃┣Maid blue</div>
+						<div id="menu263_3" class="mu" OnClick="fun_cg_26(3,3)">┃┃┗Maid red</div>
+					</div>
+					<div id="menu264" class="mu" OnClick="fun_menu('264')">┃┣Cheerleader</div>
+					<div id="list264" class="menu_class1">
+						<div id="menu264_1" class="mu" OnClick="fun_cg_26(4,1)">┃┃┣Chia blue</div>
+						<div id="menu264_2" class="mu" OnClick="fun_cg_26(4,2)">┃┃┣Chia red</div>
+						<div id="menu264_3" class="mu" OnClick="fun_cg_26(4,3)">┃┃┣Chia Yellow</div>
+						<div id="menu264_4" class="mu" OnClick="fun_cg_26(4,4)">┃┃┗Chia Green</div>
+					</div>
+					<div id="menu265" class="mu" OnClick="fun_menu('265')">┃┣Spats</div>
+					<div id="list265" class="menu_class1">
+						<div id="menu265_1" class="mu" OnClick="fun_cg_26(5,1)">┃┃┣Spats black</div>
+						<div id="menu265_2" class="mu" OnClick="fun_cg_26(5,2)">┃┃┣Spats red</div>
+						<div id="menu265_3" class="mu" OnClick="fun_cg_26(5,3)">┃┃┣Spats blue</div>
+						<div id="menu265_4" class="mu" OnClick="fun_cg_26(5,4)">┃┃┗Spats Green</div>
+					</div>
+					<div id="menu266" class="mu" OnClick="fun_menu('266')">┃┗Buruma</div>
+					<div id="list266" class="menu_class1">
+						<div id="menu266_1" class="mu" OnClick="fun_cg_26(6,1)">┃□┣Buruma black 0</div>
+						<div id="menu266_2" class="mu" OnClick="fun_cg_26(6,2)">┃□┣Buruma black 1</div>
+						<div id="menu266_3" class="mu" OnClick="fun_cg_26(6,3)">┃□┣Buruma red 0</div>
+						<div id="menu266_4" class="mu" OnClick="fun_cg_26(6,4)">┃□┣Buruma red 1</div>
+						<div id="menu266_5" class="mu" OnClick="fun_cg_26(6,5)">┃□┣Buruma blue 0</div>
+						<div id="menu266_6" class="mu" OnClick="fun_cg_26(6,6)">┃□┣Buruma blue 1</div>
+						<div id="menu266_7" class="mu" OnClick="fun_cg_26(6,7)">┃□┣Buruma Green 0</div>
+						<div id="menu266_8" class="mu" OnClick="fun_cg_26(6,8)">┃□┗Buruma Green 1</div>
+					</div>
+				</div>
+
+
+				<div id="menu52" class="mu" OnClick="fun_menu('52')">┣Hair ornaments</div>
+				<div id="list52" class="menu_class1">
+					<div id="menu52_0" class="mu" OnClick="fun_cg_cap(0);" style="background-color:#EA618E;">┃┣none</div>
+					<div id="menu52_1" class="mu" OnClick="fun_cg_cap(1);">┃┣Cat ear</div>
+					<div id="menu52_2" class="mu" OnClick="fun_cg_cap(2);">┃┣Rabbit ear</div>
+					<div id="menu52_3" class="mu" OnClick="fun_cg_cap(3);">┃┣Nurse cap pink</div>
+					<div id="menu52_4" class="mu" OnClick="fun_cg_cap(4);">┃┣Nurse cap white</div>
+					<div id="menu52_5" class="mu" OnClick="fun_cg_cap(5);">┃┣Nurse cap black</div>
+					<div id="menu52_6" class="mu" OnClick="fun_cg_cap(6);">┃┣Nurse cap red</div>
+					<div id="menu52_7" class="mu" OnClick="fun_cg_cap(7);">┃┣MAID black</div>
+					<div id="menu52_8" class="mu" OnClick="fun_cg_cap(8);">┃┣MAID blue</div>
+					<div id="menu52_9" class="mu" OnClick="fun_cg_cap(9);">┃┗MAID red</div>
+				</div>
+
+				<div id="menu4" class="mu" OnClick="fun_menu('4')">┣Option Graffiti</div>
+				<div id="list4" class="menu_class1">
+					<div id="menu4_1" class="mu" OnClick="fun_cg_paint(1);">┃┣Graffiti1</div>
+					<div id="menu4_2" class="mu" OnClick="fun_cg_paint(2);">┃┣Graffiti2</div>
+					<div id="menu4_3" class="mu" OnClick="fun_cg_paint(3);">┃┣Graffiti3</div>
+					<div id="menu4_4" class="mu" OnClick="fun_cg_paint(4);">┃┗Graffiti4</div>
+				</div>
+				<div id="menu5" class="mu" OnClick="fun_menu('5')">┗Accessory</div>
+				<div id="list5" class="menu_class1">
+					<div id="menu5_11" class="mu" OnClick="fun_cg_acc(1);">□┣pompon Yellow</div>
+					<div id="menu5_12" class="mu" OnClick="fun_cg_acc(2);">□┣pompon blue</div>
+					<div id="menu5_13" class="mu" OnClick="fun_cg_acc(3);">□┣pompon red</div>
+					<div id="menu5_14" class="mu" OnClick="fun_cg_acc(4);">□┗Kupaaaa</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="cps_mu0">
+			<div id="menu1" class="menu_class0" OnClick="fun_menu('1')">Basic set</div>
+			<div id="list1" class="menu_class1">
+				<div id="menu1_1" class="mu" OnClick="fun_menu1(1)">school</div>
+				<div id="menu1_2" class="mu" OnClick="fun_menu1(2)">school(Rape)</div>
+				<div id="menu1_3" class="mu" OnClick="fun_menu1(3)">normal</div>
+				<div id="menu1_4" class="mu" OnClick="fun_menu1(4)">Maid</div>
+				<div id="menu1_5" class="mu" OnClick="fun_menu1(5)">Maid(Rape)</div>
+				<div id="menu1_6" class="mu" OnClick="fun_menu1(6)">Bunny girl</div>
+				<div id="menu1_7" class="mu" OnClick="fun_menu1(7)">Bunny girl(Rape)</div>
+				<div id="menu1_8" class="mu" OnClick="fun_menu1(8)">Nurse1</div>
+				<div id="menu1_9" class="mu" OnClick="fun_menu1(9)">Nurse2</div>
+				<div id="menu1_10" class="mu" OnClick="fun_menu1(10)">Nurse(Rape)</div>
+				<div id="menu1_11" class="mu" OnClick="fun_menu1(11)">Cheerleader</div>
+				<div id="menu1_12" class="mu" OnClick="fun_menu1(12)">Cheerleader(Rape)</div>
+				<div id="menu1_13" class="mu" OnClick="fun_menu1(13)">Underwear</div>
+				<div id="menu1_14" class="mu" OnClick="fun_menu1(14)">Swimwear</div>
+				<div id="menu1_15" class="mu" OnClick="fun_menu1(15)">SukuMizu</div>
+				<div id="menu1_16" class="mu" OnClick="fun_menu1(16)">SukuMizu(Rape)</div>
+				<div id="menu1_17" class="mu" OnClick="fun_menu1(17)">Swimsuit</div>
+				<div id="menu1_18" class="mu" OnClick="fun_menu1(18)">Swimsuit(Rape)</div>
+				<div id="menu1_19" class="mu" OnClick="fun_menu1(19)">Buruma</div>
+				<div id="menu1_20" class="mu" OnClick="fun_menu1(20)">Buruma(Rape)</div>
+				<div id="menu1_21" class="mu" OnClick="fun_menu1(21)">Spats</div>
+				<div id="menu1_22" class="mu" OnClick="fun_menu1(22)">Spats(Rape)</div>
+				<div id="menu1_23" class="mu" OnClick="fun_menu1(23)">Naked</div>
+				<div id="menu1_24" class="mu" OnClick="fun_menu1(24)">Naked(Rape)</div>
+			</div>
+		</div>
+
+		<canvas id="cps_ck" width="820" height="800" onSelectStart="return false;"></canvas>
+
+
+		<!-- オプション -->
+		<div id="cps_img6" class="cps_img">
+			<div id="itm7"><img src="item/itm7.png" class="img_main" /></div>
+			<div id="itm6"><img src="item/itm6.png" class="img_main" /></div>
+			<div id="itm5"><img src="item/itm5.png" class="img_main" /></div>
+			<div id="itm4"><img src="item/itm4.png" class="img_main" /></div>
+			<div id="itm3"><img src="item/itm3.png" class="img_main" /></div>
+			<div id="itm2"><img src="item/itm2.png" class="img_main" /></div>
+			<div id="itm1"><img src="item/itm1.png" class="img_main" /></div>
+			<div id="cap1"><img src="item/cap1.png" class="img_main" /></div>
+			<div id="cap2"><img src="item/cap2.png" class="img_main" /></div>
+			<div id="cap3"><img src="item/cap3.png" class="img_main" /></div>
+			<div id="cap4"><img src="item/cap4.png" class="img_main" /></div>
+			<div id="cap5"><img src="item/cap5.png" class="img_main" /></div>
+			<div id="cap6"><img src="item/cap6.png" class="img_main" /></div>
+			<div id="cap7"><img src="item/cap7.png" class="img_main" /></div>
+			<div id="cap8"><img src="item/cap8.png" class="img_main" /></div>
+			<div id="cap9"><img src="item/cap9.png" class="img_main" /></div>
+			<div id="acc1"><img src="item/acc1.png" class="img_main" /></div>
+			<div id="acc2"><img src="item/acc2.png" class="img_main" /></div>
+			<div id="acc3"><img src="item/acc3.png" class="img_main" /></div>
+		</div>
+
+
+
+		<!-- 前髪 -->
+		<div id="cps_img5" class="cps_img">
+
+			<div id="hair3_1"><img src="img_hair/hair3_1.png" class="img_main" /></div>
+			<div id="hair3_2"><img src="img_hair/hair3_2.png" class="img_main" /></div>
+			<div id="hair3_3"><img src="img_hair/hair3_3.png" class="img_main" /></div>
+			<div id="hair3_4"><img src="img_hair/hair3_4.png" class="img_main" /></div>
+			<div id="hair3_5"><img src="img_hair/hair3_5.png" class="img_main" /></div>
+
+			<div id="himo"><img src="img1/himo.png" class="img_main" /></div>
+
+
+
+
+			<div id="hair2_1">
+				<div id="hair2_1_8"><img src="img_hair/hair2_1_8.png" class="img_main" /></div>
+				<div id="hair2_1_7"><img src="img_hair/hair2_1_7.png" class="img_main" /></div>
+				<div id="hair2_1_6"><img src="img_hair/hair2_1_6.png" class="img_main" /></div>
+				<div id="hair2_1_5"><img src="img_hair/hair2_1_5.png" class="img_main" /></div>
+				<div id="hair2_1_4"><img src="img_hair/hair2_1_4.png" class="img_main" /></div>
+				<div id="hair2_1_3"><img src="img_hair/hair2_1_3.png" class="img_main" /></div>
+				<div id="hair2_1_2"><img src="img_hair/hair2_1_2.png" class="img_main" /></div>
+				<div id="hair2_1_1"><img src="img_hair/hair2_1_1.png" class="img_main" /></div>
+				<div id="hair2_1_0"><img src="img_hair/hair2_1_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair2_2">
+				<div id="hair2_2_8"><img src="img_hair/hair2_2_8.png" class="img_main" /></div>
+				<div id="hair2_2_7"><img src="img_hair/hair2_2_7.png" class="img_main" /></div>
+				<div id="hair2_2_6"><img src="img_hair/hair2_2_6.png" class="img_main" /></div>
+				<div id="hair2_2_5"><img src="img_hair/hair2_2_5.png" class="img_main" /></div>
+				<div id="hair2_2_4"><img src="img_hair/hair2_2_4.png" class="img_main" /></div>
+				<div id="hair2_2_3"><img src="img_hair/hair2_2_3.png" class="img_main" /></div>
+				<div id="hair2_2_2"><img src="img_hair/hair2_2_2.png" class="img_main" /></div>
+				<div id="hair2_2_1"><img src="img_hair/hair2_2_1.png" class="img_main" /></div>
+				<div id="hair2_2_0"><img src="img_hair/hair2_2_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair2_3">
+				<div id="hair2_3_8"><img src="img_hair/hair2_3_8.png" class="img_main" /></div>
+				<div id="hair2_3_7"><img src="img_hair/hair2_3_7.png" class="img_main" /></div>
+				<div id="hair2_3_6"><img src="img_hair/hair2_3_6.png" class="img_main" /></div>
+				<div id="hair2_3_5"><img src="img_hair/hair2_3_5.png" class="img_main" /></div>
+				<div id="hair2_3_4"><img src="img_hair/hair2_3_4.png" class="img_main" /></div>
+				<div id="hair2_3_3"><img src="img_hair/hair2_3_3.png" class="img_main" /></div>
+				<div id="hair2_3_2"><img src="img_hair/hair2_3_2.png" class="img_main" /></div>
+				<div id="hair2_3_1"><img src="img_hair/hair2_3_1.png" class="img_main" /></div>
+				<div id="hair2_3_0"><img src="img_hair/hair2_3_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair2_4">
+				<div id="hair2_4_8"><img src="img_hair/hair2_4_8.png" class="img_main" /></div>
+				<div id="hair2_4_7"><img src="img_hair/hair2_4_7.png" class="img_main" /></div>
+				<div id="hair2_4_6"><img src="img_hair/hair2_4_6.png" class="img_main" /></div>
+				<div id="hair2_4_5"><img src="img_hair/hair2_4_5.png" class="img_main" /></div>
+				<div id="hair2_4_4"><img src="img_hair/hair2_4_4.png" class="img_main" /></div>
+				<div id="hair2_4_3"><img src="img_hair/hair2_4_3.png" class="img_main" /></div>
+				<div id="hair2_4_2"><img src="img_hair/hair2_4_2.png" class="img_main" /></div>
+				<div id="hair2_4_1"><img src="img_hair/hair2_4_1.png" class="img_main" /></div>
+				<div id="hair2_4_0"><img src="img_hair/hair2_4_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair2_5">
+				<div id="hair2_5_8"><img src="img_hair/hair2_5_8.png" class="img_main" /></div>
+				<div id="hair2_5_7"><img src="img_hair/hair2_5_7.png" class="img_main" /></div>
+				<div id="hair2_5_6"><img src="img_hair/hair2_5_6.png" class="img_main" /></div>
+				<div id="hair2_5_5"><img src="img_hair/hair2_5_5.png" class="img_main" /></div>
+				<div id="hair2_5_4"><img src="img_hair/hair2_5_4.png" class="img_main" /></div>
+				<div id="hair2_5_3"><img src="img_hair/hair2_5_3.png" class="img_main" /></div>
+				<div id="hair2_5_2"><img src="img_hair/hair2_5_2.png" class="img_main" /></div>
+				<div id="hair2_5_1"><img src="img_hair/hair2_5_1.png" class="img_main" /></div>
+				<div id="hair2_5_0"><img src="img_hair/hair2_5_0.png" class="img_main" /></div>
+			</div>
+
+		</div>
+
+
+
+		<!-- 腕前 -->
+		<div id="cps_aml" class="cps_img">
+			<div id="am_l12"><img src="img_arm/am_l12.png" class="costume" /></div>
+			<div id="am_l11"><img src="img_arm/am_l11.png" class="costume" /></div>
+			<div id="am_l10"><img src="img_arm/am_l10.png" class="costume" /></div>
+			<div id="am_l9"><img src="img_arm/am_l9.png" class="costume" /></div>
+			<div id="am_l8"><img src="img_arm/am_l8.png" class="costume" /></div>
+			<div id="am_l7"><img src="img_arm/am_l7.png" class="costume" /></div>
+			<div id="am_l6"><img src="img_arm/am_l6.png" class="costume" /></div>
+			<div id="am_l5"><img src="img_arm/am_l5.png" class="costume" /></div>
+			<div id="am_l4"><img src="img_arm/am_l4.png" class="costume" /></div>
+			<div id="am_l3"><img src="img_arm/am_l3.png" class="costume" /></div>
+			<div id="am_l2"><img src="img_arm/am_l2.png" class="costume" /></div>
+			<div id="am_l1"><img src="img_arm/am_l1.png" class="costume" /></div>
+
+
+			<div id="body_al5"><img src="img_body/body_al5.png" class="img_main" /></div>
+			<div id="body_al4"><img src="img_body/body_al4.png" class="img_main" /></div>
+			<div id="body_al3"><img src="img_body/body_al3.png" class="img_main" /></div>
+			<div id="body_al2"><img src="img_body/body_al2.png" class="img_main" /></div>
+			<div id="body_al1"><img src="img_body/body_al1.png" class="img_main" /></div>
+		</div>
+
+		<!-- 顔 -->
+		<div id="cps_face" class="cps_img">
+			<!-- もみあげ -->
+			<div id="hair1_1"><img src="img_hair/hair1_1.png" class="img_main" /></div>
+			<div id="hair1_2"><img src="img_hair/hair1_2.png" class="img_main" /></div>
+			<div id="hair1_3"><img src="img_hair/hair1_3.png" class="img_main" /></div>
+			<div id="hair1_4"><img src="img_hair/hair1_4.png" class="img_main" /></div>
+			<div id="hair1_5"><img src="img_hair/hair1_5.png" class="img_main" /></div>
+
+
+			<div id="cps_face4" class="cps_img">
+				<div id="f4_1"><img src="img_face/f4_1.png" class="img_main" /></div>
+				<div id="f4_2"><img src="img_face/f4_2.png" class="img_main" /></div>
+				<div id="f4_3"><img src="img_face/f4_3.png" class="img_main" /></div>
+				<div id="f4_4"><img src="img_face/f4_4.png" class="img_main" /></div>
+			</div>
+			<div id="cps_face3" class="cps_img">
+				<div id="f3_1"><img src="img_face/f3_1.png" class="img_main" /></div>
+				<div id="f3_2"><img src="img_face/f3_2.png" class="img_main" /></div>
+				<div id="f3_3"><img src="img_face/f3_3.png" class="img_main" /></div>
+			</div>
+			<div id="cps_face2" class="cps_img">
+				<div id="f2_1"><img src="img_face/f2_1.png" class="img_main" /></div>
+				<div id="f2_2"><img src="img_face/f2_2.png" class="img_main" /></div>
+				<div id="f2_3"><img src="img_face/f2_3.png" class="img_main" /></div>
+				<div id="f2_4"><img src="img_face/f2_4.png" class="img_main" /></div>
+				<div id="f2_5"><img src="img_face/f2_5.png" class="img_main" /></div>
+				<div id="f2_6"><img src="img_face/f2_6.png" class="img_main" /></div>
+				<div id="f2_7"><img src="img_face/f2_7.png" class="img_main" /></div>
+				<div id="f2_8"><img src="img_face/f2_8.png" class="img_main" /></div>
+				<div id="f2_9"><img src="img_face/f2_9.png" class="img_main" /></div>
+				<div id="f2_10"><img src="img_face/f2_10.png" class="img_main" /></div>
+				<div id="f2_11"><img src="img_face/f2_11.png" class="img_main" /></div>
+				<div id="f2_12"><img src="img_face/f2_12.png" class="img_main" /></div>
+				<div id="f2_13"><img src="img_face/f2_13.png" class="img_main" /></div>
+				<div id="f2_14"><img src="img_face/f2_14.png" class="img_main" /></div>
+				<div id="f2_15"><img src="img_face/f2_15.png" class="img_main" /></div>
+				<div id="f2_16"><img src="img_face/f2_16.png" class="img_main" /></div>
+				<div id="f2_17"><img src="img_face/f2_17.png" class="img_main" /></div>
+				<div id="f2_18"><img src="img_face/f2_18.png" class="img_main" /></div>
+				<div id="f2_19"><img src="img_face/f2_19.png" class="img_main" /></div>
+				<div id="f2_20"><img src="img_face/f2_20.png" class="img_main" /></div>
+				<div id="f2_21"><img src="img_face/f2_21.png" class="img_main" /></div>
+				<div id="f2_22"><img src="img_face/f2_22.png" class="img_main" /></div>
+				<div id="f2_23"><img src="img_face/f2_23.png" class="img_main" /></div>
+				<div id="f2_24"><img src="img_face/f2_24.png" class="img_main" /></div>
+				<div id="f2_25"><img src="img_face/f2_25.png" class="img_main" /></div>
+				<div id="f2_26"><img src="img_face/f2_26.png" class="img_main" /></div>
+				<div id="f2_27"><img src="img_face/f2_27.png" class="img_main" /></div>
+				<div id="f2_28"><img src="img_face/f2_28.png" class="img_main" /></div>
+				<div id="f2_29"><img src="img_face/f2_29.png" class="img_main" /></div>
+				<div id="f2_30"><img src="img_face/f2_30.png" class="img_main" /></div>
+				<div id="f2_31"><img src="img_face/f2_31.png" class="img_main" /></div>
+				<div id="f2_32"><img src="img_face/f2_32.png" class="img_main" /></div>
+				<div id="f2_33"><img src="img_face/f2_33.png" class="img_main" /></div>
+				<div id="f2_34"><img src="img_face/f2_34.png" class="img_main" /></div>
+				<div id="f2_35"><img src="img_face/f2_35.png" class="img_main" /></div>
+				<div id="f2_36"><img src="img_face/f2_36.png" class="img_main" /></div>
+				<div id="f2_37"><img src="img_face/f2_37.png" class="img_main" /></div>
+				<div id="f2_38"><img src="img_face/f2_38.png" class="img_main" /></div>
+				<div id="f2_39"><img src="img_face/f2_39.png" class="img_main" /></div>
+				<div id="f2_40"><img src="img_face/f2_40.png" class="img_main" /></div>
+				<div id="f2_41"><img src="img_face/f2_41.png" class="img_main" /></div>
+				<div id="f2_42"><img src="img_face/f2_42.png" class="img_main" /></div>
+				<div id="f2_43"><img src="img_face/f2_43.png" class="img_main" /></div>
+				<div id="f2_44"><img src="img_face/f2_44.png" class="img_main" /></div>
+				<div id="f2_45"><img src="img_face/f2_45.png" class="img_main" /></div>
+				<div id="f2_46"><img src="img_face/f2_46.png" class="img_main" /></div>
+			</div>
+			<div id="cps_face1" class="cps_img">
+				<div id="f1_15"><img src="img_face/f1_15.png" class="img_main" /></div>
+				<div id="f1_14"><img src="img_face/f1_14.png" class="img_main" /></div>
+				<div id="f1_13"><img src="img_face/f1_13.png" class="img_main" /></div>
+				<div id="f1_12"><img src="img_face/f1_12.png" class="img_main" /></div>
+				<div id="f1_11"><img src="img_face/f1_11.png" class="img_main" /></div>
+				<div id="f1_10"><img src="img_face/f1_10.png" class="img_main" /></div>
+				<div id="f1_9"><img src="img_face/f1_9.png" class="img_main" /></div>
+				<div id="f1_8"><img src="img_face/f1_8.png" class="img_main" /></div>
+				<div id="f1_7"><img src="img_face/f1_7.png" class="img_main" /></div>
+				<div id="f1_6"><img src="img_face/f1_6.png" class="img_main" /></div>
+				<div id="f1_5"><img src="img_face/f1_5.png" class="img_main" /></div>
+				<div id="f1_4"><img src="img_face/f1_4.png" class="img_main" /></div>
+				<div id="f1_3"><img src="img_face/f1_3.png" class="img_main" /></div>
+				<div id="f1_2"><img src="img_face/f1_2.png" class="img_main" /></div>
+				<div id="f1_1"><img src="img_face/f1_1.png" class="img_main" /></div>
+			</div>
+			<div id="cps_face0" class="cps_img">
+				<div id="f0_2"><img src="img_face/f0_2.png" class="img_main" /></div>
+				<div id="f0_1"><img src="img_face/f0_1.png" class="img_main" /></div>
+			</div>
+
+
+			<div id="face5"><img src="img_body/face5.png" class="img_main" /></div>
+			<div id="face4"><img src="img_body/face4.png" class="img_main" /></div>
+			<div id="face3"><img src="img_body/face3.png" class="img_main" /></div>
+			<div id="face2"><img src="img_body/face2.png" class="img_main" /></div>
+			<div id="face1"><img src="img_body/face1.png" class="img_main" /></div>
+		</div>
+
+
+
+
+
+		<!-- 腕奥 -->
+		<div id="cps_amr" class="cps_img">
+			<div id="am_r12"><img src="img_arm/am_r12.png" class="costume" /></div>
+			<div id="am_r11"><img src="img_arm/am_r11.png" class="costume" /></div>
+			<div id="am_r10"><img src="img_arm/am_r10.png" class="costume" /></div>
+			<div id="am_r9"><img src="img_arm/am_r9.png" class="costume" /></div>
+			<div id="am_r8"><img src="img_arm/am_r8.png" class="costume" /></div>
+			<div id="am_r7"><img src="img_arm/am_r7.png" class="costume" /></div>
+			<div id="am_r6"><img src="img_arm/am_r6.png" class="costume" /></div>
+			<div id="am_r5"><img src="img_arm/am_r5.png" class="costume" /></div>
+			<div id="am_r4"><img src="img_arm/am_r4.png" class="costume" /></div>
+			<div id="am_r3"><img src="img_arm/am_r3.png" class="costume" /></div>
+			<div id="am_r2"><img src="img_arm/am_r2.png" class="costume" /></div>
+			<div id="am_r1"><img src="img_arm/am_r1.png" class="costume" /></div>
+
+
+			<div id="body_ar5"><img src="img_body/body_ar5.png" class="img_main" /></div>
+			<div id="body_ar4"><img src="img_body/body_ar4.png" class="img_main" /></div>
+			<div id="body_ar3"><img src="img_body/body_ar3.png" class="img_main" /></div>
+			<div id="body_ar2"><img src="img_body/body_ar2.png" class="img_main" /></div>
+			<div id="body_ar1"><img src="img_body/body_ar1.png" class="img_main" /></div>
+		</div>
+		<!-- 上着 -->
+		<div id="cps_img2_4" class="cps_img">
+
+
+			<!-- 体操服 -->
+			<div id="be5_8"><img src="img2_4/be5_8.png" class="costume" /></div>
+			<div id="be5_7"><img src="img2_4/be5_7.png" class="costume" /></div>
+			<div id="be5_6"><img src="img2_4/be5_6.png" class="costume" /></div>
+			<div id="be5_5"><img src="img2_4/be5_5.png" class="costume" /></div>
+			<div id="be5_4"><img src="img2_4/be5_4.png" class="costume" /></div>
+			<div id="be5_3"><img src="img2_4/be5_3.png" class="costume" /></div>
+			<div id="be5_2"><img src="img2_4/be5_2.png" class="costume" /></div>
+			<div id="be5_1"><img src="img2_4/be5_1.png" class="costume" /></div>
+			<!-- チア -->
+			<div id="be4_8"><img src="img2_4/be4_8.png" class="costume" /></div>
+			<div id="be4_7"><img src="img2_4/be4_7.png" class="costume" /></div>
+			<div id="be4_6"><img src="img2_4/be4_6.png" class="costume" /></div>
+			<div id="be4_5"><img src="img2_4/be4_5.png" class="costume" /></div>
+			<div id="be4_4"><img src="img2_4/be4_4.png" class="costume" /></div>
+			<div id="be4_3"><img src="img2_4/be4_3.png" class="costume" /></div>
+			<div id="be4_2"><img src="img2_4/be4_2.png" class="costume" /></div>
+			<div id="be4_1"><img src="img2_4/be4_1.png" class="costume" /></div>
+			<!-- メイド -->
+			<div id="be3_6"><img src="img2_4/be3_6.png" class="costume" /></div>
+			<div id="be3_5"><img src="img2_4/be3_5.png" class="costume" /></div>
+			<div id="be3_4"><img src="img2_4/be3_4.png" class="costume" /></div>
+			<div id="be3_3"><img src="img2_4/be3_3.png" class="costume" /></div>
+			<div id="be3_2"><img src="img2_4/be3_2.png" class="costume" /></div>
+			<div id="be3_1"><img src="img2_4/be3_1.png" class="costume" /></div>
+			<!-- 制服・普段着 -->
+			<div id="be2_6"><img src="img2_4/be2_6.png" class="costume" /></div>
+			<div id="be2_5"><img src="img2_4/be2_5.png" class="costume" /></div>
+			<div id="be2_4"><img src="img2_4/be2_4.png" class="costume" /></div>
+			<div id="be2_3"><img src="img2_4/be2_3.png" class="costume" /></div>
+			<div id="be2_2"><img src="img2_4/be2_2.png" class="costume" /></div>
+			<div id="be2_1"><img src="img2_4/be2_1.png" class="costume" /></div>
+			<!-- ナース -->
+			<div id="be1_8"><img src="img2_4/be1_8.png" class="costume" /></div>
+			<div id="be1_7"><img src="img2_4/be1_7.png" class="costume" /></div>
+			<div id="be1_6"><img src="img2_4/be1_6.png" class="costume" /></div>
+			<div id="be1_5"><img src="img2_4/be1_5.png" class="costume" /></div>
+			<div id="be1_4"><img src="img2_4/be1_4.png" class="costume" /></div>
+			<div id="be1_3"><img src="img2_4/be1_3.png" class="costume" /></div>
+			<div id="be1_2"><img src="img2_4/be1_2.png" class="costume" /></div>
+			<div id="be1_1"><img src="img2_4/be1_1.png" class="costume" /></div>
+			<!-- ブルマ -->
+			<div id="bf6_8"><img src="img2_4/bf6_8.png" class="costume" /></div>
+			<div id="bf6_7"><img src="img2_4/bf6_7.png" class="costume" /></div>
+			<div id="bf6_6"><img src="img2_4/bf6_6.png" class="costume" /></div>
+			<div id="bf6_5"><img src="img2_4/bf6_5.png" class="costume" /></div>
+			<div id="bf6_4"><img src="img2_4/bf6_4.png" class="costume" /></div>
+			<div id="bf6_3"><img src="img2_4/bf6_3.png" class="costume" /></div>
+			<div id="bf6_2"><img src="img2_4/bf6_2.png" class="costume" /></div>
+			<div id="bf6_1"><img src="img2_4/bf6_1.png" class="costume" /></div>
+			<!-- スパッツ -->
+			<div id="bf5_4"><img src="img2_4/bf5_4.png" class="costume" /></div>
+			<div id="bf5_3"><img src="img2_4/bf5_3.png" class="costume" /></div>
+			<div id="bf5_2"><img src="img2_4/bf5_2.png" class="costume" /></div>
+			<div id="bf5_1"><img src="img2_4/bf5_1.png" class="costume" /></div>
+			<!-- チアスカート -->
+			<div id="bf4_4"><img src="img2_4/bf4_4.png" class="costume" /></div>
+			<div id="bf4_3"><img src="img2_4/bf4_3.png" class="costume" /></div>
+			<div id="bf4_2"><img src="img2_4/bf4_2.png" class="costume" /></div>
+			<div id="bf4_1"><img src="img2_4/bf4_1.png" class="costume" /></div>
+			<!-- メイドスカート -->
+			<div id="bf3_3"><img src="img2_4/bf3_3.png" class="costume" /></div>
+			<div id="bf3_2"><img src="img2_4/bf3_2.png" class="costume" /></div>
+			<div id="bf3_1"><img src="img2_4/bf3_1.png" class="costume" /></div>
+			<!-- ホットパンツ -->
+			<div id="bf2_3"><img src="img2_4/bf2_3.png" class="costume" /></div>
+			<div id="bf2_2"><img src="img2_4/bf2_2.png" class="costume" /></div>
+			<div id="bf2_1"><img src="img2_4/bf2_1.png" class="costume" /></div>
+			<!-- 制服スカート -->
+			<div id="bf1_4"><img src="img2_4/bf1_4.png" class="costume" /></div>
+			<div id="bf1_3"><img src="img2_4/bf1_3.png" class="costume" /></div>
+			<div id="bf1_2"><img src="img2_4/bf1_2.png" class="costume" /></div>
+			<div id="bf1_1"><img src="img2_4/bf1_1.png" class="costume" /></div>
+		</div>
+		<!-- 下着 -->
+		<div id="cps_img2_3" class="cps_img">
+			<!-- ぱんつ -->
+			<div id="bd10"><img src="img2_3/bd10.png" class="costume" /></div>
+			<div id="bd9"><img src="img2_3/bd9.png" class="costume" /></div>
+			<div id="bd8"><img src="img2_3/bd8.png" class="costume" /></div>
+			<div id="bd7"><img src="img2_3/bd7.png" class="costume" /></div>
+			<div id="bd6"><img src="img2_3/bd6.png" class="costume" /></div>
+			<div id="bd5"><img src="img2_3/bd5.png" class="costume" /></div>
+			<div id="bd4"><img src="img2_3/bd4.png" class="costume" /></div>
+			<div id="bd3"><img src="img2_3/bd3.png" class="costume" /></div>
+			<div id="bd2"><img src="img2_3/bd2.png" class="costume" /></div>
+			<div id="bd1"><img src="img2_3/bd1.png" class="costume" /></div>
+			<!-- ブラ -->
+			<div id="bc10"><img src="img2_3/bc10.png" class="costume" /></div>
+			<div id="bc9"><img src="img2_3/bc9.png" class="costume" /></div>
+			<div id="bc8"><img src="img2_3/bc8.png" class="costume" /></div>
+			<div id="bc7"><img src="img2_3/bc7.png" class="costume" /></div>
+			<div id="bc6"><img src="img2_3/bc6.png" class="costume" /></div>
+			<div id="bc5"><img src="img2_3/bc5.png" class="costume" /></div>
+			<div id="bc4"><img src="img2_3/bc4.png" class="costume" /></div>
+			<div id="bc3"><img src="img2_3/bc3.png" class="costume" /></div>
+			<div id="bc2"><img src="img2_3/bc2.png" class="costume" /></div>
+			<div id="bc1"><img src="img2_3/bc1.png" class="costume" /></div>
+		</div>
+
+		<!-- 靴下 -->
+		<div id="cps_img2_2" class="cps_img">
+			<div id="bb3"><img src="img2_2/bb3.png" class="costume" /></div>
+			<div id="bb2"><img src="img2_2/bb2.png" class="costume" /></div>
+			<div id="bb1"><img src="img2_2/bb1.png" class="costume" /></div>
+		</div>
+
+		<!-- 全身 -->
+		<div id="cps_img2_1" class="cps_img">
+			<!-- バニー -->
+			<div id="ba3_12"><img src="img2_1/ba3_12.png" class="costume" /></div>
+			<div id="ba3_11"><img src="img2_1/ba3_11.png" class="costume" /></div>
+			<div id="ba3_10"><img src="img2_1/ba3_10.png" class="costume" /></div>
+			<div id="ba3_9"><img src="img2_1/ba3_9.png" class="costume" /></div>
+			<div id="ba3_8"><img src="img2_1/ba3_8.png" class="costume" /></div>
+			<div id="ba3_7"><img src="img2_1/ba3_7.png" class="costume" /></div>
+			<div id="ba3_6"><img src="img2_1/ba3_6.png" class="costume" /></div>
+			<div id="ba3_5"><img src="img2_1/ba3_5.png" class="costume" /></div>
+			<div id="ba3_4"><img src="img2_1/ba3_4.png" class="costume" /></div>
+			<div id="ba3_3"><img src="img2_1/ba3_3.png" class="costume" /></div>
+			<div id="ba3_2"><img src="img2_1/ba3_2.png" class="costume" /></div>
+			<div id="ba3_1"><img src="img2_1/ba3_1.png" class="costume" /></div>
+
+			<!-- 競泳黒 -->
+			<div id="ba2_9"><img src="img2_1/ba2_9.png" class="costume" /></div><!-- 黒 -->
+			<div id="ba2_8"><img src="img2_1/ba2_8.png" class="costume" /></div>
+			<div id="ba2_7"><img src="img2_1/ba2_7.png" class="costume" /></div>
+			<div id="ba2_6"><img src="img2_1/ba2_6.png" class="costume" /></div><!-- 赤 -->
+			<div id="ba2_5"><img src="img2_1/ba2_5.png" class="costume" /></div>
+			<div id="ba2_4"><img src="img2_1/ba2_4.png" class="costume" /></div>
+			<div id="ba2_3"><img src="img2_1/ba2_3.png" class="costume" /></div><!-- 青 -->
+			<div id="ba2_2"><img src="img2_1/ba2_2.png" class="costume" /></div>
+			<div id="ba2_1"><img src="img2_1/ba2_1.png" class="costume" /></div>
+			<!-- スク水 -->
+			<div id="ba1_12"><img src="img2_1/ba1_12.png" class="costume" /></div><!-- 赤 -->
+			<div id="ba1_11"><img src="img2_1/ba1_11.png" class="costume" /></div>
+			<div id="ba1_10"><img src="img2_1/ba1_10.png" class="costume" /></div>
+			<div id="ba1_9"><img src="img2_1/ba1_9.png" class="costume" /></div><!-- 白 -->
+			<div id="ba1_8"><img src="img2_1/ba1_8.png" class="costume" /></div>
+			<div id="ba1_7"><img src="img2_1/ba1_7.png" class="costume" /></div>
+			<div id="ba1_6"><img src="img2_1/ba1_6.png" class="costume" /></div><!-- 黒 -->
+			<div id="ba1_5"><img src="img2_1/ba1_5.png" class="costume" /></div>
+			<div id="ba1_4"><img src="img2_1/ba1_4.png" class="costume" /></div>
+			<div id="ba1_3"><img src="img2_1/ba1_3.png" class="costume" /></div><!-- 青 -->
+			<div id="ba1_2"><img src="img2_1/ba1_2.png" class="costume" /></div>
+			<div id="ba1_1"><img src="img2_1/ba1_1.png" class="costume" /></div>
+		</div>
+
+		<!-- 基本body -->
+		<div id="cps_img1" class="cps_img">
+			<div id="moji4"><img src="img1/moji4.png" class="img_main" /></div>
+			<div id="moji3"><img src="img1/moji3.png" class="img_main" /></div>
+			<div id="moji2"><img src="img1/moji2.png" class="img_main" /></div>
+			<div id="moji1"><img src="img1/moji1.png" class="img_main" /></div>
+
+
+
+
+			<div id="pai5"><img src="img_body/pai5.png" class="img_main" /></div>
+			<div id="pai4"><img src="img_body/pai4.png" class="img_main" /></div>
+			<div id="pai3"><img src="img_body/pai3.png" class="img_main" /></div>
+			<div id="pai2"><img src="img_body/pai2.png" class="img_main" /></div>
+			<div id="pai1"><img src="img_body/pai1.png" class="img_main" /></div>
+			<div id="main_b5"><img src="img_body/main_b5.png" class="img_main" /></div>
+			<div id="main_b4"><img src="img_body/main_b4.png" class="img_main" /></div>
+			<div id="main_b3"><img src="img_body/main_b3.png" class="img_main" /></div>
+			<div id="main_b2"><img src="img_body/main_b2.png" class="img_main" /></div>
+			<div id="main_b1"><img src="img_body/main_b1.png" class="img_main" /></div>
+
+
+			<div id="in4"><img src="img1/in4.png" class="img_main" /></div>
+			<div id="in3"><img src="img1/in3.png" class="img_main" /></div>
+			<div id="in2"><img src="img1/in2.png" class="img_main" /></div>
+			<div id="in2r">
+				<div id="in2_0"><img src="img1/in2_0.png" class="img_main" /></div>
+				<div id="in2_1"><img src="img1/in2_1.png" class="img_main" /></div>
+				<div id="in2_2"><img src="img1/in2_2.png" class="img_main" /></div>
+				<div id="in2_3"><img src="img1/in2_3.png" class="img_main" /></div>
+				<div id="in2_4"><img src="img1/in2_4.png" class="img_main" /></div>
+				<div id="in2_5"><img src="img1/in2_5.png" class="img_main" /></div>
+				<div id="in2_6"><img src="img1/in2_6.png" class="img_main" /></div>
+				<div id="in2_7"><img src="img1/in2_7.png" class="img_main" /></div>
+				<div id="in2_8"><img src="img1/in2_8.png" class="img_main" /></div>
+			</div>
+			<div id="in1"><img src="img1/in1.png" class="img_main" /></div>
+
+
+
+			<!-- パンツ -->
+			<div id="bd10r"><img src="img2_3/bd10r.png" class="costume" /></div>
+			<div id="bd8r"><img src="img2_3/bd8r.png" class="costume" /></div>
+			<div id="bd6r"><img src="img2_3/bd6r.png" class="costume" /></div>
+			<div id="bd4r"><img src="img2_3/bd4r.png" class="costume" /></div>
+			<div id="bd2r"><img src="img2_3/bd2r.png" class="costume" /></div>
+			<!-- バニー -->
+			<div id="ba_ami"><img src="img2_1/ba_ami.png" class="costume" /></div>
+			<div id="ba_d4"><img src="img2_1/ba_d4.png" class="costume" /></div>
+			<div id="ba_d3"><img src="img2_1/ba_d3.png" class="costume" /></div>
+			<div id="ba_d2"><img src="img2_1/ba_d2.png" class="costume" /></div>
+			<div id="ba_d1"><img src="img2_1/ba_d1.png" class="costume" /></div>
+			<!-- メイドスカート -->
+			<div id="bf3_3r"><img src="img2_4/bf3_3r.png" class="costume" /></div>
+			<div id="bf3_2r"><img src="img2_4/bf3_2r.png" class="costume" /></div>
+			<div id="bf3_1r"><img src="img2_4/bf3_1r.png" class="costume" /></div>
+			<!-- 制服スカート -->
+			<div id="bf1_4r"><img src="img2_4/bf1_4r.png" class="costume" /></div>
+			<div id="bf1_3r"><img src="img2_4/bf1_3r.png" class="costume" /></div>
+			<div id="bf1_2r"><img src="img2_4/bf1_2r.png" class="costume" /></div>
+			<div id="bf1_1r"><img src="img2_4/bf1_1r.png" class="costume" /></div>
+
+
+
+
+			<div id="kupa5"><img src="img_body/kupa5.png" class="img_main" /></div>
+			<div id="kupa4"><img src="img_body/kupa4.png" class="img_main" /></div>
+			<div id="kupa3"><img src="img_body/kupa3.png" class="img_main" /></div>
+			<div id="kupa2"><img src="img_body/kupa2.png" class="img_main" /></div>
+			<div id="kupa1"><img src="img_body/kupa1.png" class="img_main" /></div>
+			<div id="main_a5"><img src="img_body/main_a5.png" class="img_main" /></div>
+			<div id="main_a4"><img src="img_body/main_a4.png" class="img_main" /></div>
+			<div id="main_a3"><img src="img_body/main_a3.png" class="img_main" /></div>
+			<div id="main_a2"><img src="img_body/main_a2.png" class="img_main" /></div>
+			<div id="main_a1"><img src="img_body/main_a1.png" class="img_main" /></div>
+
+
+
+			<div id="hair_c0_1">
+				<div id="hair_c0_1_8"><img src="img_hair/hair_c0_1_8.png" class="img_main" /></div>
+				<div id="hair_c0_1_7"><img src="img_hair/hair_c0_1_7.png" class="img_main" /></div>
+				<div id="hair_c0_1_6"><img src="img_hair/hair_c0_1_6.png" class="img_main" /></div>
+				<div id="hair_c0_1_5"><img src="img_hair/hair_c0_1_5.png" class="img_main" /></div>
+				<div id="hair_c0_1_4"><img src="img_hair/hair_c0_1_4.png" class="img_main" /></div>
+				<div id="hair_c0_1_3"><img src="img_hair/hair_c0_1_3.png" class="img_main" /></div>
+				<div id="hair_c0_1_2"><img src="img_hair/hair_c0_1_2.png" class="img_main" /></div>
+				<div id="hair_c0_1_1"><img src="img_hair/hair_c0_1_1.png" class="img_main" /></div>
+				<div id="hair_c0_1_0"><img src="img_hair/hair_c0_1_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_b0_1">
+				<div id="hair_b0_1_8"><img src="img_hair/hair_b0_1_8.png" class="img_main" /></div>
+				<div id="hair_b0_1_7"><img src="img_hair/hair_b0_1_7.png" class="img_main" /></div>
+				<div id="hair_b0_1_6"><img src="img_hair/hair_b0_1_6.png" class="img_main" /></div>
+				<div id="hair_b0_1_5"><img src="img_hair/hair_b0_1_5.png" class="img_main" /></div>
+				<div id="hair_b0_1_4"><img src="img_hair/hair_b0_1_4.png" class="img_main" /></div>
+				<div id="hair_b0_1_3"><img src="img_hair/hair_b0_1_3.png" class="img_main" /></div>
+				<div id="hair_b0_1_2"><img src="img_hair/hair_b0_1_2.png" class="img_main" /></div>
+				<div id="hair_b0_1_1"><img src="img_hair/hair_b0_1_1.png" class="img_main" /></div>
+				<div id="hair_b0_1_0"><img src="img_hair/hair_b0_1_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_a0_1">
+				<div id="hair_a0_1_8"><img src="img_hair/hair_a0_1_8.png" class="img_main" /></div>
+				<div id="hair_a0_1_7"><img src="img_hair/hair_a0_1_7.png" class="img_main" /></div>
+				<div id="hair_a0_1_6"><img src="img_hair/hair_a0_1_6.png" class="img_main" /></div>
+				<div id="hair_a0_1_5"><img src="img_hair/hair_a0_1_5.png" class="img_main" /></div>
+				<div id="hair_a0_1_4"><img src="img_hair/hair_a0_1_4.png" class="img_main" /></div>
+				<div id="hair_a0_1_3"><img src="img_hair/hair_a0_1_3.png" class="img_main" /></div>
+				<div id="hair_a0_1_2"><img src="img_hair/hair_a0_1_2.png" class="img_main" /></div>
+				<div id="hair_a0_1_1"><img src="img_hair/hair_a0_1_1.png" class="img_main" /></div>
+				<div id="hair_a0_1_0"><img src="img_hair/hair_a0_1_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_c0_2">
+				<div id="hair_c0_2_8"><img src="img_hair/hair_c0_2_8.png" class="img_main" /></div>
+				<div id="hair_c0_2_7"><img src="img_hair/hair_c0_2_7.png" class="img_main" /></div>
+				<div id="hair_c0_2_6"><img src="img_hair/hair_c0_2_6.png" class="img_main" /></div>
+				<div id="hair_c0_2_5"><img src="img_hair/hair_c0_2_5.png" class="img_main" /></div>
+				<div id="hair_c0_2_4"><img src="img_hair/hair_c0_2_4.png" class="img_main" /></div>
+				<div id="hair_c0_2_3"><img src="img_hair/hair_c0_2_3.png" class="img_main" /></div>
+				<div id="hair_c0_2_2"><img src="img_hair/hair_c0_2_2.png" class="img_main" /></div>
+				<div id="hair_c0_2_1"><img src="img_hair/hair_c0_2_1.png" class="img_main" /></div>
+				<div id="hair_c0_2_0"><img src="img_hair/hair_c0_2_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_b0_2">
+				<div id="hair_b0_2_8"><img src="img_hair/hair_b0_2_8.png" class="img_main" /></div>
+				<div id="hair_b0_2_7"><img src="img_hair/hair_b0_2_7.png" class="img_main" /></div>
+				<div id="hair_b0_2_6"><img src="img_hair/hair_b0_2_6.png" class="img_main" /></div>
+				<div id="hair_b0_2_5"><img src="img_hair/hair_b0_2_5.png" class="img_main" /></div>
+				<div id="hair_b0_2_4"><img src="img_hair/hair_b0_2_4.png" class="img_main" /></div>
+				<div id="hair_b0_2_3"><img src="img_hair/hair_b0_2_3.png" class="img_main" /></div>
+				<div id="hair_b0_2_2"><img src="img_hair/hair_b0_2_2.png" class="img_main" /></div>
+				<div id="hair_b0_2_1"><img src="img_hair/hair_b0_2_1.png" class="img_main" /></div>
+				<div id="hair_b0_2_0"><img src="img_hair/hair_b0_2_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_a0_2">
+				<div id="hair_a0_2_8"><img src="img_hair/hair_a0_2_8.png" class="img_main" /></div>
+				<div id="hair_a0_2_7"><img src="img_hair/hair_a0_2_7.png" class="img_main" /></div>
+				<div id="hair_a0_2_6"><img src="img_hair/hair_a0_2_6.png" class="img_main" /></div>
+				<div id="hair_a0_2_5"><img src="img_hair/hair_a0_2_5.png" class="img_main" /></div>
+				<div id="hair_a0_2_4"><img src="img_hair/hair_a0_2_4.png" class="img_main" /></div>
+				<div id="hair_a0_2_3"><img src="img_hair/hair_a0_2_3.png" class="img_main" /></div>
+				<div id="hair_a0_2_2"><img src="img_hair/hair_a0_2_2.png" class="img_main" /></div>
+				<div id="hair_a0_2_1"><img src="img_hair/hair_a0_2_1.png" class="img_main" /></div>
+				<div id="hair_a0_2_0"><img src="img_hair/hair_a0_2_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_c0_3">
+				<div id="hair_c0_3_8"><img src="img_hair/hair_c0_3_8.png" class="img_main" /></div>
+				<div id="hair_c0_3_7"><img src="img_hair/hair_c0_3_7.png" class="img_main" /></div>
+				<div id="hair_c0_3_6"><img src="img_hair/hair_c0_3_6.png" class="img_main" /></div>
+				<div id="hair_c0_3_5"><img src="img_hair/hair_c0_3_5.png" class="img_main" /></div>
+				<div id="hair_c0_3_4"><img src="img_hair/hair_c0_3_4.png" class="img_main" /></div>
+				<div id="hair_c0_3_3"><img src="img_hair/hair_c0_3_3.png" class="img_main" /></div>
+				<div id="hair_c0_3_2"><img src="img_hair/hair_c0_3_2.png" class="img_main" /></div>
+				<div id="hair_c0_3_1"><img src="img_hair/hair_c0_3_1.png" class="img_main" /></div>
+				<div id="hair_c0_3_0"><img src="img_hair/hair_c0_3_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_b0_3">
+				<div id="hair_b0_3_8"><img src="img_hair/hair_b0_3_8.png" class="img_main" /></div>
+				<div id="hair_b0_3_7"><img src="img_hair/hair_b0_3_7.png" class="img_main" /></div>
+				<div id="hair_b0_3_6"><img src="img_hair/hair_b0_3_6.png" class="img_main" /></div>
+				<div id="hair_b0_3_5"><img src="img_hair/hair_b0_3_5.png" class="img_main" /></div>
+				<div id="hair_b0_3_4"><img src="img_hair/hair_b0_3_4.png" class="img_main" /></div>
+				<div id="hair_b0_3_3"><img src="img_hair/hair_b0_3_3.png" class="img_main" /></div>
+				<div id="hair_b0_3_2"><img src="img_hair/hair_b0_3_2.png" class="img_main" /></div>
+				<div id="hair_b0_3_1"><img src="img_hair/hair_b0_3_1.png" class="img_main" /></div>
+				<div id="hair_b0_3_0"><img src="img_hair/hair_b0_3_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_a0_3">
+				<div id="hair_a0_3_8"><img src="img_hair/hair_a0_3_8.png" class="img_main" /></div>
+				<div id="hair_a0_3_7"><img src="img_hair/hair_a0_3_7.png" class="img_main" /></div>
+				<div id="hair_a0_3_6"><img src="img_hair/hair_a0_3_6.png" class="img_main" /></div>
+				<div id="hair_a0_3_5"><img src="img_hair/hair_a0_3_5.png" class="img_main" /></div>
+				<div id="hair_a0_3_4"><img src="img_hair/hair_a0_3_4.png" class="img_main" /></div>
+				<div id="hair_a0_3_3"><img src="img_hair/hair_a0_3_3.png" class="img_main" /></div>
+				<div id="hair_a0_3_2"><img src="img_hair/hair_a0_3_2.png" class="img_main" /></div>
+				<div id="hair_a0_3_1"><img src="img_hair/hair_a0_3_1.png" class="img_main" /></div>
+				<div id="hair_a0_3_0"><img src="img_hair/hair_a0_3_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_c0_4">
+				<div id="hair_c0_4_8"><img src="img_hair/hair_c0_4_8.png" class="img_main" /></div>
+				<div id="hair_c0_4_7"><img src="img_hair/hair_c0_4_7.png" class="img_main" /></div>
+				<div id="hair_c0_4_6"><img src="img_hair/hair_c0_4_6.png" class="img_main" /></div>
+				<div id="hair_c0_4_5"><img src="img_hair/hair_c0_4_5.png" class="img_main" /></div>
+				<div id="hair_c0_4_4"><img src="img_hair/hair_c0_4_4.png" class="img_main" /></div>
+				<div id="hair_c0_4_3"><img src="img_hair/hair_c0_4_3.png" class="img_main" /></div>
+				<div id="hair_c0_4_2"><img src="img_hair/hair_c0_4_2.png" class="img_main" /></div>
+				<div id="hair_c0_4_1"><img src="img_hair/hair_c0_4_1.png" class="img_main" /></div>
+				<div id="hair_c0_4_0"><img src="img_hair/hair_c0_4_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_b0_4">
+				<div id="hair_b0_4_8"><img src="img_hair/hair_b0_4_8.png" class="img_main" /></div>
+				<div id="hair_b0_4_7"><img src="img_hair/hair_b0_4_7.png" class="img_main" /></div>
+				<div id="hair_b0_4_6"><img src="img_hair/hair_b0_4_6.png" class="img_main" /></div>
+				<div id="hair_b0_4_5"><img src="img_hair/hair_b0_4_5.png" class="img_main" /></div>
+				<div id="hair_b0_4_4"><img src="img_hair/hair_b0_4_4.png" class="img_main" /></div>
+				<div id="hair_b0_4_3"><img src="img_hair/hair_b0_4_3.png" class="img_main" /></div>
+				<div id="hair_b0_4_2"><img src="img_hair/hair_b0_4_2.png" class="img_main" /></div>
+				<div id="hair_b0_4_1"><img src="img_hair/hair_b0_4_1.png" class="img_main" /></div>
+				<div id="hair_b0_4_0"><img src="img_hair/hair_b0_4_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_a0_4">
+				<div id="hair_a0_4_8"><img src="img_hair/hair_a0_4_8.png" class="img_main" /></div>
+				<div id="hair_a0_4_7"><img src="img_hair/hair_a0_4_7.png" class="img_main" /></div>
+				<div id="hair_a0_4_6"><img src="img_hair/hair_a0_4_6.png" class="img_main" /></div>
+				<div id="hair_a0_4_5"><img src="img_hair/hair_a0_4_5.png" class="img_main" /></div>
+				<div id="hair_a0_4_4"><img src="img_hair/hair_a0_4_4.png" class="img_main" /></div>
+				<div id="hair_a0_4_3"><img src="img_hair/hair_a0_4_3.png" class="img_main" /></div>
+				<div id="hair_a0_4_2"><img src="img_hair/hair_a0_4_2.png" class="img_main" /></div>
+				<div id="hair_a0_4_1"><img src="img_hair/hair_a0_4_1.png" class="img_main" /></div>
+				<div id="hair_a0_4_0"><img src="img_hair/hair_a0_4_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_c0_5">
+				<div id="hair_c0_5_8"><img src="img_hair/hair_c0_5_8.png" class="img_main" /></div>
+				<div id="hair_c0_5_7"><img src="img_hair/hair_c0_5_7.png" class="img_main" /></div>
+				<div id="hair_c0_5_6"><img src="img_hair/hair_c0_5_6.png" class="img_main" /></div>
+				<div id="hair_c0_5_5"><img src="img_hair/hair_c0_5_5.png" class="img_main" /></div>
+				<div id="hair_c0_5_4"><img src="img_hair/hair_c0_5_4.png" class="img_main" /></div>
+				<div id="hair_c0_5_3"><img src="img_hair/hair_c0_5_3.png" class="img_main" /></div>
+				<div id="hair_c0_5_2"><img src="img_hair/hair_c0_5_2.png" class="img_main" /></div>
+				<div id="hair_c0_5_1"><img src="img_hair/hair_c0_5_1.png" class="img_main" /></div>
+				<div id="hair_c0_5_0"><img src="img_hair/hair_c0_5_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_b0_5">
+				<div id="hair_b0_5_8"><img src="img_hair/hair_b0_5_8.png" class="img_main" /></div>
+				<div id="hair_b0_5_7"><img src="img_hair/hair_b0_5_7.png" class="img_main" /></div>
+				<div id="hair_b0_5_6"><img src="img_hair/hair_b0_5_6.png" class="img_main" /></div>
+				<div id="hair_b0_5_5"><img src="img_hair/hair_b0_5_5.png" class="img_main" /></div>
+				<div id="hair_b0_5_4"><img src="img_hair/hair_b0_5_4.png" class="img_main" /></div>
+				<div id="hair_b0_5_3"><img src="img_hair/hair_b0_5_3.png" class="img_main" /></div>
+				<div id="hair_b0_5_2"><img src="img_hair/hair_b0_5_2.png" class="img_main" /></div>
+				<div id="hair_b0_5_1"><img src="img_hair/hair_b0_5_1.png" class="img_main" /></div>
+				<div id="hair_b0_5_0"><img src="img_hair/hair_b0_5_0.png" class="img_main" /></div>
+			</div>
+			<div id="hair_a0_5">
+				<div id="hair_a0_5_8"><img src="img_hair/hair_a0_5_8.png" class="img_main" /></div>
+				<div id="hair_a0_5_7"><img src="img_hair/hair_a0_5_7.png" class="img_main" /></div>
+				<div id="hair_a0_5_6"><img src="img_hair/hair_a0_5_6.png" class="img_main" /></div>
+				<div id="hair_a0_5_5"><img src="img_hair/hair_a0_5_5.png" class="img_main" /></div>
+				<div id="hair_a0_5_4"><img src="img_hair/hair_a0_5_4.png" class="img_main" /></div>
+				<div id="hair_a0_5_3"><img src="img_hair/hair_a0_5_3.png" class="img_main" /></div>
+				<div id="hair_a0_5_2"><img src="img_hair/hair_a0_5_2.png" class="img_main" /></div>
+				<div id="hair_a0_5_1"><img src="img_hair/hair_a0_5_1.png" class="img_main" /></div>
+				<div id="hair_a0_5_0"><img src="img_hair/hair_a0_5_0.png" class="img_main" /></div>
+			</div>
+
+
+		</div>
+
+	</div>
+
+</div>
+
+
+
+<div style="display:none;">
+<audio src="mp3/1.mp3" preload="auto" loop="loop" id="bgmBk"></audio>
+</div>
+
+
+</div>
+</body>
+</html>
