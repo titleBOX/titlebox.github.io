@@ -1,0 +1,19 @@
+/*ウェブフォントを使用する場合はここに定義を追加して下さい*/
+
+@font-face {
+ font-family:"notojp";
+ src:url("../data/others/NotoSansCJKjp-Regular.otf") format("opentype");
+ font-weight:normal;font-style:normal;
+}
+
+@font-face {
+ font-family:"notosc";
+ src:url("../data/others/NotoSansCJKsc-Regular.otf") format("opentype");
+ font-weight:normal;font-style:normal;
+}
+
+@font-face {
+ font-family:"nototc";
+ src:url("../data/others/NotoSansCJKtc-Regular.otf") format("opentype");
+ font-weight:normal;font-style:normal;
+}
